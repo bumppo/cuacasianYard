@@ -9,7 +9,7 @@ INSERT INTO users (name) VALUES
   ('Шамиль'),
   ('Макс');
 
-INSERT INTO meals (name, cost, user_id) VALUES
+INSERT INTO meals (description, cost, user_id) VALUES
   ('виски', 500, 100),
   ('пиво', 300, 101),
   ('ром', 500, 102),

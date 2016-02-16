@@ -12,9 +12,9 @@ CREATE TABLE users
 
 CREATE TABLE meals
 (
-  id      INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-  name    VARCHAR NOT NULL,
-  cost    INTEGER NOT NULL,
-  user_id INTEGER NOT NULL,
+  id             INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  description    VARCHAR NOT NULL,
+  cost           INTEGER NOT NULL,
+  user_id        INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
