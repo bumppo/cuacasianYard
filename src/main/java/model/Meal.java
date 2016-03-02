@@ -3,7 +3,6 @@ package model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by VMoskalik on 16.02.2016.
