@@ -20,7 +20,7 @@ public class Meal extends BaseEntity {
     @Column(name = "cost", nullable = false)
     private Integer cost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

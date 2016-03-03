@@ -44,8 +44,6 @@
 
     <tx:annotation-driven />
 
-    <context:component-scan base-package="repository"/>
     <jpa:repositories base-package="repository"/>
-
 
 </beans>
