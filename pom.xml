@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.yard</groupId>
-    <artifactId>caucasian</artifactId>
+    <groupId>ru.caucasianYard</groupId>
+    <artifactId>caucasianYard</artifactId>
     <packaging>war</packaging>
 
     <version>1.0-SNAPSHOT</version>
@@ -15,18 +15,18 @@
     <properties>
 
         <java.version>1.8</java.version>
-        <tomcat.version>7.0.57</tomcat.version>
+        <tomcat.version>8.0.30</tomcat.version>
 
         <!--database-->
         <postgres.version>9.4-1206-jdbc42</postgres.version>
 
         <!--spring-->
-        <!--<spring.version>4.2.5.RELEASE</spring.version>-->
         <spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
 
         <!--hibernate-->
         <hibernate.version>5.1.0.Final</hibernate.version>
         <hibernate-validator.version>5.3.0.Alpha1</hibernate-validator.version>
+
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -48,19 +48,10 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
 
 
     <dependencies>
-
-        <!--java-->
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
-            <scope>runtime</scope>
-        </dependency>
 
         <!--database-->
         <dependency>
@@ -68,25 +59,22 @@
             <artifactId>postgresql</artifactId>
             <version>${postgres.version}</version>
         </dependency>
-
-        <!--spring-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-context</artifactId>-->
-        <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-data-jpa.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-orm</artifactId>-->
-        <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
-
-        <!--hibernate-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-java8</artifactId>
@@ -101,6 +89,24 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
+        </dependency>
+
+        <!--web-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <!--<version>4.2.5.RELEASE</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
     </dependencies>
