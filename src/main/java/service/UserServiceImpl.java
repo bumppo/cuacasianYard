@@ -4,6 +4,7 @@ import javassist.NotFoundException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import repository.UserRepository;
 
 import java.util.List;
@@ -23,16 +24,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(int id) throws NotFoundException {
+    public void delete(int id) {
         repository.delete(id);
     }
 
     @Override
-    public User get(int id) throws NotFoundException {
+    public User get(int id) {
         return repository.get(id);
     }
 
     @Override
+    @Transactional
     public void update(User user) {
         repository.save(user);
     }

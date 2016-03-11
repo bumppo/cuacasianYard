@@ -15,9 +15,9 @@ public interface UserService {
 
     void update (User user);
 
-    User get(int id) throws NotFoundException;
+    User get(int id);
 
-    void delete(int id) throws NotFoundException;
+    void delete(int id);
 
     List<User> getAll();
 }
