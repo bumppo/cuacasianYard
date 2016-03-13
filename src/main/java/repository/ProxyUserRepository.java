@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by VMoskalik on 03.03.2016.
  */
-@Transactional
+@Transactional(readOnly = true)
 public interface ProxyUserRepository extends JpaRepository<User, Integer> {
 
     @Override

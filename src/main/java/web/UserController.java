@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
+import to.TOUser;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class UserController {
     private UserService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User get(@PathVariable("id") int id){
+    public TOUser get(@PathVariable("id") int id){
         return service.get(id);
     }
 
@@ -30,7 +31,7 @@ public class UserController {
         service.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<User> getAll(){
         return service.getAll();
     }

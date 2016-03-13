@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.UserRepository;
+import to.TOUser;
 
 import java.util.List;
 
@@ -29,12 +30,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(int id) {
-        return repository.get(id);
+    public TOUser get(int id) {
+        return new TOUser(repository.get(id));
     }
 
     @Override
-    @Transactional
     public void update(User user) {
         repository.save(user);
     }

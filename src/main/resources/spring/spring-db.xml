@@ -13,19 +13,19 @@
     http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 
+    <context:property-placeholder location="classpath:db/postgres.properties"/>
+
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-        <jdbc:script location="classpath:db/${jdbc.init}"/>
-        <jdbc:script encoding="utf-8" location="classpath:db/${jdbc.populate}"/>
+        <jdbc:script location="${jdbc.init}"/>
+        <jdbc:script encoding="utf-8" location="${jdbc.populate}"/>
     </jdbc:initialize-database>
 
-    <!--<beans profile="tomcat">-->
-        <!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/caucasian"/>-->
-        <!--<context:property-placeholder location="classpath:db/tomcat.properties" system-properties-mode="OVERRIDE"/>-->
-    <!--</beans>-->
+    <beans profile="tomcat">
+        <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/caucasianYard"/>
+        <context:property-placeholder location="classpath:db/tomcat.properties" system-properties-mode="OVERRIDE"/>
+    </beans>
 
     <beans profile="postgres">
-        <context:property-placeholder location="classpath:db/postgres.properties"/>
-
         <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
             <property name="driverClassName" value="${database.driverClassName}" />
             <property name="url" value="${database.url}" />
