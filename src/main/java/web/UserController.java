@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
-import to.TOUser;
 
 import java.util.List;
 
@@ -22,8 +21,10 @@ public class UserController {
     private UserService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public TOUser get(@PathVariable("id") int id){
-        return service.get(id);
+    public User get(@PathVariable("id") int id){
+        User u = service.get(id);
+        System.out.println(u.toString());
+        return u;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -31,9 +32,11 @@ public class UserController {
         service.delete(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<User> getAll(){
-        return service.getAll();
+        List<User> list = service.getAll();
+        list.stream().forEach(u -> System.out.println(u.toString()));
+        return list;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)

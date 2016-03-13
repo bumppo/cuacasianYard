@@ -1,11 +1,6 @@
 package service;
 
-import javassist.NotFoundException;
 import model.User;
-import org.springframework.transaction.annotation.Transactional;
-import to.TOUser;
-
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -17,7 +12,7 @@ public interface UserService {
 
     void update (User user);
 
-    TOUser get(int id);
+    User get(int id);
 
     void delete(int id);
 

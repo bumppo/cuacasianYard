@@ -1,12 +1,11 @@
 package service;
 
-import javassist.NotFoundException;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import repository.UserRepository;
-import to.TOUser;
 
 import java.util.List;
 
@@ -14,27 +13,32 @@ import java.util.List;
  * Created by VMoskalik on 03.03.2016.
  */
 @Service
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository repository;
 
     @Override
+    @Transactional
     public User save(User user) {
         return repository.save(user);
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         repository.delete(id);
     }
 
     @Override
-    public TOUser get(int id) {
-        return new TOUser(repository.get(id));
+    @Transactional
+    public User get(int id) {
+        return repository.get(id);
     }
 
     @Override
+    @Transactional
     public void update(User user) {
         repository.save(user);
     }
