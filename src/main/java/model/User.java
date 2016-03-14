@@ -21,11 +21,16 @@ public class User extends BaseEntity {
     @Column(name = "name", nullable = false)
     protected String name;
 
-//    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "user")
-//    @OrderBy("cost DESC")
-//    protected List<Meal> meals;
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "user")
+    @OrderBy("cost DESC")
+    protected List<Meal> meals;
 
     public User() {
+    }
+
+    public User(int id, String name){
+        this.id = id;
+        this.name = name;
     }
 
 //    public String getName() {

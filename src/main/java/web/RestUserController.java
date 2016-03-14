@@ -37,7 +37,7 @@ public class RestUserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@RequestBody User user, @PathVariable("id") int id){
-        service.update(user);
+        service.save(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
