@@ -8,13 +8,13 @@ import java.util.List;
  */
 public interface UserService {
 
+    List<User> getAll();
+
+    User get(int id);
+
     User save(User user);
 
     void update (User user);
 
-    User get(int id);
-
     void delete(int id);
-
-    List<User> getAll();
 }

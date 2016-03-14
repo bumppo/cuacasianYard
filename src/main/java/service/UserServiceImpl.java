@@ -13,11 +13,21 @@ import java.util.List;
  * Created by VMoskalik on 03.03.2016.
  */
 @Service
-@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository repository;
+
+    @Override
+    public List<User> getAll() {
+        return repository.getAll();
+    }
+
+    @Override
+    public User get(int id) {
+        return repository.get(id);
+    }
 
     @Override
     @Transactional
@@ -27,24 +37,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    @Transactional
-    public User get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    @Transactional
     public void update(User user) {
         repository.save(user);
     }
 
     @Override
-    public List<User> getAll() {
-        return repository.getAll();
+    @Transactional
+    public void delete(int id) {
+        repository.delete(id);
     }
 }

@@ -3,6 +3,7 @@ package service;
 import model.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import repository.MealRepository;
 
 import java.util.List;
@@ -11,19 +12,15 @@ import java.util.List;
  * Created by VMoskalik on 03.03.2016.
  */
 @Service
+@Transactional(readOnly = true)
 public class MealServiceImpl implements MealService {
 
     @Autowired
     MealRepository repository;
 
     @Override
-    public Meal save(Meal meal) {
-        return repository.save(meal);
-    }
-
-    @Override
-    public void update(Meal meal) {
-        repository.save(meal);
+    public List<Meal> getAll() {
+        return repository.getAll();
     }
 
     @Override
@@ -32,12 +29,20 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public void delete(int id) {
-        repository.delete(id);
+    @Transactional
+    public Meal save(Meal meal) {
+        return repository.save(meal);
     }
 
     @Override
-    public List<Meal> getAll() {
-        return null;
+    @Transactional
+    public void update(Meal meal) {
+        repository.save(meal);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        repository.delete(id);
     }
 }

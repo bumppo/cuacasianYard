@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface MealService {
 
+    List<Meal> getAll();
+
+    Meal get (int id);
+
     Meal save(Meal meal);
 
     void update (Meal meal);
 
-    Meal get (int id);
-
     void delete(int id);
-
-    List<Meal> getAll();
 }

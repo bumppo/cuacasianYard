@@ -19,13 +19,8 @@ public class UserRepositoryImpl implements UserRepository {
     private ProxyUserRepository proxy;
 
     @Override
-    public User save(User user) {
-        return proxy.save(user);
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return proxy.delete(id) != 0;
+    public List<User> getAll() {
+        return proxy.findAll(SORT_BY_NAME);
     }
 
     @Override
@@ -34,7 +29,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> getAll() {
-        return proxy.findAll(SORT_BY_NAME);
+    public User save(User user) {
+        return proxy.save(user);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return proxy.delete(id) != 0;
     }
 }

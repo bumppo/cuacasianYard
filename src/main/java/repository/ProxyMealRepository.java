@@ -11,21 +11,18 @@ import java.util.List;
 /**
  * Created by VMoskalik on 03.03.2016.
  */
-@Transactional
 public interface ProxyMealRepository extends JpaRepository<Meal, Integer> {
 
     @Override
-    @Transactional
-    Meal save (Meal meal);
-
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM Meal m WHERE m.id = ?1")
-    int delete(int id);
+    List<Meal> findAll();
 
     @Override
     Meal findOne(Integer id);
 
     @Override
-    List<Meal> findAll();
+    Meal save (Meal meal);
+
+    @Modifying
+    @Query("DELETE FROM Meal m WHERE m.id = ?1")
+    int delete(int id);
 }

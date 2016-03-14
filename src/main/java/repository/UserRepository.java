@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface UserRepository {
 
-    User save(User user);
-
-    //false if not found
-    boolean delete(int id);
+    List<User> getAll();
 
     //null if not founf
     User get(int id);
 
-    List<User> getAll();
+    User save(User user);
+
+    //false if not found
+    boolean delete(int id);
 }

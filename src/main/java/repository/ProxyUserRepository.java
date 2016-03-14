@@ -14,15 +14,15 @@ import java.util.List;
 public interface ProxyUserRepository extends JpaRepository<User, Integer> {
 
     @Override
-    User save(User user);
-
-    @Modifying
-    @Query("DELETE FROM User u WHERE u.id = ?1")
-    int delete(int id);
+    List<User> findAll(Sort sort);
 
     @Override
     User findOne(Integer id);
 
     @Override
-    List<User> findAll(Sort sort);
+    User save(User user);
+
+    @Modifying
+    @Query("DELETE FROM User u WHERE u.id = ?1")
+    int delete(int id);
 }

@@ -27,19 +27,24 @@ public class Meal extends BaseEntity {
     public Meal() {
     }
 
-    public Integer getCost() {
-        return cost;
-    }
+//    public Integer getCost() {
+//        return cost;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setCost(Integer cost) {
+//        this.cost = cost;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setCost(Integer cost) {
-        this.cost = cost;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public String toString() {
+        return this.description + "_" + this.cost;
     }
 }

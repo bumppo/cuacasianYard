@@ -19,13 +19,8 @@ public class MealRepositoryImpl implements MealRepository {
     ProxyMealRepository proxy;
 
     @Override
-    public Meal save(Meal meal) {
-        return proxy.save(meal);
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return proxy.delete(id) != 0;
+    public List<Meal> getAll() {
+        return proxy.findAll();
     }
 
     @Override
@@ -34,7 +29,12 @@ public class MealRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public List<Meal> getAll() {
-        return proxy.findAll();
+    public Meal save(Meal meal) {
+        return proxy.save(meal);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return proxy.delete(id) != 0;
     }
 }
