@@ -14,7 +14,7 @@ import service.UserService;
  * Created by vmoskalik on 14.03.2016.
  */
 @Controller
-@RequestMapping(value = "users")
+@RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
