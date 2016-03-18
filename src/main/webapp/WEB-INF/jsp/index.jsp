@@ -5,6 +5,7 @@
     <title>Caucasian Yard</title>
 </head>
 <body>
-<p><a href="/users">Список юзеров</a></p>
+<p><a href="${pageContext.request.contextPath}/users">Список юзеров</a></p>
+<p><a href="${pageContext.request.contextPath}/meals">Список блюд</a></p>
 </body>
 </html>

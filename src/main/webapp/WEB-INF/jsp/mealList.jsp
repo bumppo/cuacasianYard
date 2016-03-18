@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <html>
 <head>
     <style type="text/css">
@@ -41,22 +42,26 @@
     <title>User list</title>
 </head>
 <body>
-<h1 style="color:#d2691e; text-align:center">User List</h1>
+<h1 style="color:#d2691e; text-align:center">Meal List</h1>
 
 <table class="mealsTable">
     <thead>
     <tr>
-        <th>Name</th>
+        <th>Description</th>
+        <th>Cost</th>
+        <th>User</th>
         <th colspan="2">Actions</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${userList}" var="user">
-        <jsp:useBean id="user" class="model.User" scope="page"/>
+    <c:forEach items="${mealList}" var="meal">
+        <jsp:useBean id="meal" class="model.Meal" scope="page"/>
         <tr>
-            <c:url var="editUrl" value="/users/update?id=${user.id}" />
-            <c:url var="deleteUrl" value="/users/delete?id=${user.id}" />
-            <td> ${user.name} </td>
+            <c:url var="editUrl" value="/meals/update?id=${meal.id}" />
+            <c:url var="deleteUrl" value="/meals/delete?id=${meal.id}" />
+            <td> ${meal.description} </td>
+            <td> ${meal.cost} </td>
+            <td> ${meal.user.name}</td>
             <td><a href="${editUrl}">Edit</a></td>
             <td><a href="${deleteUrl}">Delete</a></td>
         </tr>
@@ -64,7 +69,7 @@
     </tbody>
 </table>
 <br>
-<p><a href="${pageContext.request.contextPath}/users/create">Добавить пользователя</a></p>
+<p><a href="${pageContext.request.contextPath}/meals/create">Добавить блюдо</a></p>
 <br>
 </body>
 </html>
