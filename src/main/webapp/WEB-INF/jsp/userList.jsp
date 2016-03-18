@@ -4,7 +4,7 @@
 <html>
 <head>
     <style type="text/css">
-        table.mealsTable {
+        table.myTable {
             font-family: verdana,arial,sans-serif;
             font-size:11px;
             color:#333333;
@@ -16,7 +16,7 @@
             margin-left:auto;
             margin-right:auto;
         }
-        table.mealsTable th {
+        table.myTable th {
             background:#1ee2ff;
             border-width: 1px;
             padding: 8px;
@@ -24,7 +24,7 @@
             border-color: #999999;
             text-align: center;
         }
-        table.mealsTable td {
+        table.myTable td {
             background:#dcddc0 ;
             border-width: 1px;
             padding: 8px;
@@ -41,9 +41,9 @@
     <title>User list</title>
 </head>
 <body>
-<h1 style="color:#d2691e; text-align:center">User List</h1>
+<h1 style="color:#d2691e; text-align:center">Visitors List</h1>
 
-<table class="mealsTable">
+<table class="myTable">
     <thead>
     <tr>
         <th>Name</th>
@@ -64,7 +64,7 @@
     </tbody>
 </table>
 <br>
-<p><a href="${pageContext.request.contextPath}/users/create">Добавить пользователя</a></p>
+<p><a href="${pageContext.request.contextPath}/users/create">Add visitor</a></p>
 <br>
 </body>
 </html>

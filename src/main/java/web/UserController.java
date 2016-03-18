@@ -4,10 +4,7 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
 /**
@@ -45,7 +42,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createOrUpdate(@RequestParam("id") int id, @RequestParam("name") String name){
+    public String createOrUpdate(@ModelAttribute("id") Integer id, @ModelAttribute("name") String name){
         User user = new User(id, name);
         service.save(user);
         return "redirect:/users";
