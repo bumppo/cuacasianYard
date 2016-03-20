@@ -19,26 +19,17 @@
             </dd>
         </dl>
         <dl>
-            <dt>Meal's cost</dt>
+            <dt>Meal's cost:</dt>
             <dd>
                 <form:input path="cost"/>
             </dd>
         </dl>
         <dl>
-            <dt>Visitor</dt>
+            <dt>Visitor:</dt>
             <dd>
                 <form:select path="user" id="user">
-                    <form:option value="0" label="---Select One---"/>
-                    <c:forEach items="${userList}" var="tempUser">
-                        <c:choose>
-                            <c:when test="${meal.user.name == tempUser.name}">
-                                <option value="${tempUser.id}" selected="selected">${tempUser.name}</option>
-                            </c:when>
-                            <c:otherwise>
-                                <option value="${tempUser.id}">${tempUser.name}</option>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
+                    <form:option value="0" label="---Select Visitor---"/>
+                    <form:options items="${userList}" itemValue="id" itemlabel="name"/>
                 </form:select>
             </dd>
         </dl>

@@ -17,6 +17,7 @@
             margin-right:auto;
         }
         table.myTable th {
+            font-weight: bold;
             background:#1ee2ff;
             border-width: 1px;
             padding: 8px;
@@ -31,6 +32,20 @@
             border-style: solid;
             border-color: #999999;
             text-align: center;
+        }
+        div.myDiv {
+            margin:auto 0;
+            text-align: center;
+        }
+        input.myInput {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            font-weight: bold;
+            background:#1ee2ff;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
         }
     </style>
     <title>Meal List</title>
@@ -64,7 +79,10 @@
     </tbody>
 </table>
 <br>
-<p><a href="${pageContext.request.contextPath}/meals/create">Add meal</a></p>
-<br>
+<form action="${pageContext.request.contextPath}/meals/create">
+    <div class="myDiv">
+        <input class="myInput" type="submit" value="Add Meal">
+    </div>
+</form>
 </body>
 </html>

@@ -32,6 +32,20 @@
             border-color: #999999;
             text-align: center;
         }
+        div.myDiv {
+            margin:auto 0;
+            text-align: center;
+        }
+        input.myInput {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            font-weight: bold;
+            background:#1ee2ff;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
     </style>
     <title>Visitors List</title>
 </head>
@@ -60,7 +74,10 @@
     </tbody>
 </table>
 <br>
-<p><a href="${pageContext.request.contextPath}/users/create">Add visitor</a></p>
-<br>
+<form action="${pageContext.request.contextPath}/users/create">
+    <div class="myDiv">
+        <input class="myInput" type="submit" value="Add Visitor">
+    </div>
+</form>
 </body>
 </html>

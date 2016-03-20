@@ -50,8 +50,7 @@ public class MealController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String editForUpdate(Model model, @RequestParam("id") int id){
-        Meal meal= service.get(id);
-        model.addAttribute("meal", meal);
+        model.addAttribute("meal", service.get(id));
         model.addAttribute("userList", userService.getAll());
         return "mealEdit";
     }
