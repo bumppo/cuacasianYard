@@ -4,10 +4,7 @@ import model.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import service.MealService;
 import service.UserService;
 
@@ -39,29 +36,41 @@ public class MealController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String editForCreate(Model model){
         model.addAttribute("meal", new Meal());
+        model.addAttribute("userList", userService.getAll());
         return "mealEdit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String editForUpdate(Model model, @RequestParam("id") int id){
-        model.addAttribute("meal", service.get(id));
+        Meal meal= service.get(id);
+        meal.setUser_id(meal.getUser().getId());
+        model.addAttribute("meal", meal);
+        model.addAttribute("userList", userService.getAll());
         return "mealEdit";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createOrUpdate(@RequestParam("id") int id,
-                                 @RequestParam("user_id") int user_id,
-                                 @RequestParam("description") String description,
-                                 @RequestParam("cost") int cost) {
-        Meal meal = new Meal(id, description, cost);
-        meal.setUser(userService.get(user_id));
-        service.save(meal);
+    public String createOrUpdate(@ModelAttribute("meal") Meal mealFromForm) {
+        //Meal mealFromForm = new Meal(id, description, cost);
+        mealFromForm.setUser(userService.get(mealFromForm.getUser_id()));
+        service.save(mealFromForm);
         return "redirect:/meals";
     }
+
+//    @RequestMapping(method = RequestMethod.POST)
+//    public String createOrUpdate(@RequestParam(value = "id", required = false) int id,
+//                                 @RequestParam("user_id") int user_id,
+//                                 @RequestParam("description") String description,
+//                                 @RequestParam("cost") int cost) {
+//        Meal mealFromForm = new Meal(id, description, cost);
+//        mealFromForm.setUser(userService.get(user_id));
+//        service.save(mealFromForm);
+//        return "redirect:/meals";
+//    }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam("id") int id){
         service.delete(id);
-        return "redirect:/users";
+        return "redirect:/meals";
     }
 }

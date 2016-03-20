@@ -1,9 +1,6 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Proxy;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,8 +25,8 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(int id, String name){
-        this.id = id;
+    public User(Integer id, String name){
+        super(id);
         this.name = name;
     }
 

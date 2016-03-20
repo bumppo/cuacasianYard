@@ -32,15 +32,11 @@
             border-color: #999999;
             text-align: center;
         }
-        .redText{color:#ff0000;
-            font-size: 16px ;}
-        .greenText{color:#008000;
-            font-size: 16px ;}
-        .text{font-size: 20px ;}
     </style>
-    <title>User list</title>
+    <title>Meal List</title>
 </head>
 <body>
+<h2><a href="${pageContext.request.contextPath}/users">Show Visitors List</a></h2>
 <h1 style="color:#d2691e; text-align:center">Meal List</h1>
 
 <table class="myTable">

@@ -13,14 +13,14 @@ import java.util.List;
 @Repository
 public class MealRepositoryImpl implements MealRepository {
 
-//    private static final Sort SORT_BY_USER_NAME = new Sort("user");
+    private static final Sort SORT_BY_USER_ID = new Sort("user");
 
     @Autowired
     ProxyMealRepository proxy;
 
     @Override
     public List<Meal> getAll() {
-        return proxy.findAll();
+        return proxy.findAll(SORT_BY_USER_ID);
     }
 
     @Override

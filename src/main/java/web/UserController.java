@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createOrUpdate(@ModelAttribute("id") Integer id, @ModelAttribute("name") String name){
+    public String createOrUpdate(@RequestParam(value = "id", required = false) Integer id, @RequestParam("name") String name){
         User user = new User(id, name);
         service.save(user);
         return "redirect:/users";
