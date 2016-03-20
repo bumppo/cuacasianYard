@@ -2,18 +2,21 @@
 
 <html>
 <head>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
     <title>Edit user</title>
 </head>
-<body>
+<body class="myBody">
+<div class="myHeader">
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="mySpan">Back to Visitors List</span></a></h2>
+</div>
+<hr>
 <section>
-    <h2><a href="${pageContext.request.contextPath}/users">Back to Visitors List</a></h2>
-    <hr>
     <jsp:useBean id="user" type="model.User" scope="request"/>
     <form method="post" action="${pageContext.request.contextPath}/users">
-        <input type="hidden" name="id" value="${tempUser.id}">
+        <input type="hidden" name="id" value="${user.id}">
         <dl>
-            <dt>Visitor's name:</dt>
-            <dd><input type="text" name="name" value="${tempUser.name}" required></dd>
+            <dt><span class="mySpan">Visitor's name:</span></dt>
+            <dd><input type="text" name="name" value="${user.name}" required></dd>
         </dl>
         <button type="submit">Save</button>
         <button onclick="window.history.back()">Cancel</button>
