@@ -44,7 +44,7 @@
     <tr>
         <th>Description</th>
         <th>Cost</th>
-        <th>User</th>
+        <th>Visitor</th>
         <th colspan="2">Actions</th>
     </tr>
     </thead>

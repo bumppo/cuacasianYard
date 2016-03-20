@@ -47,12 +47,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${userList}" var="user">
+    <c:forEach items="${userList}" var="tempUser">
         <jsp:useBean id="user" class="model.User" scope="page"/>
         <tr>
-            <c:url var="editUrl" value="/users/update?id=${user.id}" />
-            <c:url var="deleteUrl" value="/users/delete?id=${user.id}" />
-            <td> ${user.name} </td>
+            <c:url var="editUrl" value="/users/update?id=${tempUser.id}" />
+            <c:url var="deleteUrl" value="/users/delete?id=${tempUser.id}" />
+            <td> ${tempUser.name} </td>
             <td><a href="${editUrl}">Edit</a></td>
             <td><a href="${deleteUrl}">Delete</a></td>
         </tr>

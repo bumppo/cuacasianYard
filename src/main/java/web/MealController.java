@@ -1,12 +1,15 @@
 package web;
 
 import model.Meal;
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import service.MealService;
 import service.UserService;
+import util.UserPropertyEditor;
 
 /**
  * Created by VMoskalik on 18.03.2016.
@@ -20,6 +23,11 @@ public class MealController {
 
     @Autowired
     UserService userService;
+
+    @InitBinder
+    public void initBinderUser(WebDataBinder binder){
+        binder.registerCustomEditor(User.class, new UserPropertyEditor());
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getAll(Model model){
@@ -43,7 +51,6 @@ public class MealController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String editForUpdate(Model model, @RequestParam("id") int id){
         Meal meal= service.get(id);
-        meal.setUser_id(meal.getUser().getId());
         model.addAttribute("meal", meal);
         model.addAttribute("userList", userService.getAll());
         return "mealEdit";
@@ -51,8 +58,6 @@ public class MealController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String createOrUpdate(@ModelAttribute("meal") Meal mealFromForm) {
-        //Meal mealFromForm = new Meal(id, description, cost);
-        mealFromForm.setUser(userService.get(mealFromForm.getUser_id()));
         service.save(mealFromForm);
         return "redirect:/meals";
     }

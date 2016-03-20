@@ -27,19 +27,18 @@
         <dl>
             <dt>Visitor</dt>
             <dd>
-                <form:select path="user_id">
+                <form:select path="user" id="user">
                     <form:option value="0" label="---Select One---"/>
-                    <c:forEach items="${userList}" var="user">
+                    <c:forEach items="${userList}" var="tempUser">
                         <c:choose>
-                            <c:when test="${meal.user_id == user.id}">
-                                <option value="${user.id}" selected="selected">${user.name}</option>
+                            <c:when test="${meal.user.name == tempUser.name}">
+                                <option value="${tempUser.id}" selected="selected">${tempUser.name}</option>
                             </c:when>
                             <c:otherwise>
-                                <option value="${user.id}">${user.name}</option>
+                                <option value="${tempUser.id}">${tempUser.name}</option>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
-
                 </form:select>
             </dd>
         </dl>

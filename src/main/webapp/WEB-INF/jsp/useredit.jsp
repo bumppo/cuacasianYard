@@ -10,10 +10,10 @@
     <hr>
     <jsp:useBean id="user" type="model.User" scope="request"/>
     <form method="post" action="${pageContext.request.contextPath}/users">
-        <input type="hidden" name="id" value="${user.id}">
+        <input type="hidden" name="id" value="${tempUser.id}">
         <dl>
             <dt>Visitor's name:</dt>
-            <dd><input type="text" name="name" value="${user.name}"></dd>
+            <dd><input type="text" name="name" value="${tempUser.name}" required></dd>
         </dl>
         <button type="submit">Save</button>
         <button onclick="window.history.back()">Cancel</button>

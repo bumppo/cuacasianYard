@@ -25,13 +25,7 @@ public class Meal extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    //for :select form in JSP
-    @Transient
-//    @Column(name = "user_id", nullable = false)
-    private Integer user_id;
-
     public Meal() {
-//        this.user_id = this.user.getId();
     }
 
     public Meal(Integer id, String description, int cost){
@@ -52,10 +46,6 @@ public class Meal extends BaseEntity {
         return user;
     }
 
-    public Integer getUser_id() {
-        return user_id;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -66,10 +56,6 @@ public class Meal extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
     }
 
     @Override
