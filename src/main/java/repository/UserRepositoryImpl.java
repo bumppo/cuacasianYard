@@ -29,6 +29,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getWithMeals(int id) {
+        return proxy.getWithMeals(id);
+    }
+
+    @Override
     public User save(User user) {
         return proxy.save(user);
     }

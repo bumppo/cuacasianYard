@@ -12,6 +12,8 @@ public interface UserService {
 
     User get(int id);
 
+    User getWithMeals(int id);
+
     User save(User user);
 
     void delete(int id);

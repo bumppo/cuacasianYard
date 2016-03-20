@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getWithMeals(int id) {
+        return repository.getWithMeals(id);
+    }
+
+    @Override
     @Transactional
     public User save(User user) {
         return repository.save(user);

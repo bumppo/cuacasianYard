@@ -38,6 +38,10 @@ public class User extends BaseEntity {
         this.name = name;
     }
 
+    public List<Meal> getMeals() {
+        return meals;
+    }
+
     @Override
     public String toString() {
         return name;

@@ -25,7 +25,8 @@ public class UserController {
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public String get(Model model, @PathVariable("id") int id){
-        model.addAttribute("user", service.get(id));
+        User user = service.getWithMeals(id);
+        model.addAttribute("user", user);
         return "user";
     }
 

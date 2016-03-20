@@ -3,57 +3,15 @@
 
 <html>
 <head>
-    <style type="text/css">
-        table.myTable {
-            font-family: verdana,arial,sans-serif;
-            font-size:11px;
-            color:#333333;
-            border-width: 1px;
-            border-color: #999999;
-            border-collapse: collapse;
-            width: 60%;
-            height: 50px;
-            margin-left:auto;
-            margin-right:auto;
-        }
-        table.myTable th {
-            font-weight: bold;
-            background:#1ee2ff;
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #999999;
-            text-align: center;
-        }
-        table.myTable td {
-            background:#dcddc0 ;
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #999999;
-            text-align: center;
-        }
-        div.myDiv {
-            margin:auto 0;
-            text-align: center;
-        }
-        input.myInput {
-            font-family: verdana,arial,sans-serif;
-            font-size:11px;
-            font-weight: bold;
-            background:#1ee2ff;
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #999999;
-        }
-    </style>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
     <title>Meal List</title>
 </head>
-<body>
-<h2><a href="${pageContext.request.contextPath}/users">Show Visitors List</a></h2>
-<h1 style="color:#d2691e; text-align:center">Meal List</h1>
-
+<body class="myBody">
+<div class="myHeader">
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="mySpan">Show Visitors List</span></a></h2>
+</div>
+<hr>
+<h1 style="text-align:center"><span class="mySpan">Meal List</span></h1>
 <table class="myTable">
     <thead>
     <tr>

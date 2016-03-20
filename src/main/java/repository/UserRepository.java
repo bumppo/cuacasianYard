@@ -14,6 +14,8 @@ public interface UserRepository {
     //null if not founf
     User get(int id);
 
+    User getWithMeals(int id);
+
     User save(User user);
 
     //false if not found

@@ -1,31 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
     <title>Edit meal</title>
 </head>
-<body>
+<body class="myBody">
+<div class="myHeader">
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="mySpan">Back to Meal List</span></a></h2>
+</div>
+<hr>
 <section>
-    <h2><a href="${pageContext.request.contextPath}/meals">Back to Meal List</a></h2>
-    <hr>
     <form:form modelAttribute="meal" id="meal" method="post" action="${pageContext.request.contextPath}/meals" >
         <form:hidden path="id"/>
         <dl>
-            <dt>Meal's description:</dt>
+            <dt><span class="mySpan">Meal's description:</span></dt>
             <dd>
                 <form:input path="description"/>
             </dd>
         </dl>
         <dl>
-            <dt>Meal's cost:</dt>
+            <dt><span class="mySpan">Meal's cost:</span></dt>
             <dd>
                 <form:input path="cost"/>
             </dd>
         </dl>
         <dl>
-            <dt>Visitor:</dt>
+            <dt><span class="mySpan">Visitor:</span></dt>
             <dd>
                 <form:select path="user" id="user">
                     <form:option value="0" label="---Select Visitor---"/>
