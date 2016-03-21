@@ -10,10 +10,10 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="mySpan">Show Visitors List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Show Visitors List</span></a></h2>
 </div>
 <hr>
-<h1 style="text-align:center"><span class="mySpan">Meal List</span></h1>
+<h1 style="text-align:center"><span class="header">Meal List</span></h1>
 <table class="myTable">
     <thead>
     <tr>
@@ -48,22 +48,18 @@
 </form>
 <hr>
 <section>
+    <div class="myDiv">
     <form:form modelAttribute="toMoney" id="toMoney" method="post" action="${pageContext.request.contextPath}/money" >
         <form:hidden path="id"/>
-        <dl>
-            <dt><span class="mySpan">Payed in fact:</span></dt>
-            <dd>
-                <form:input path="payed"/>
-            </dd>
-        </dl>
-        <dl>
-            <dt><span class="mySpan">Lucky hours:</span></dt>
-            <dd>
-                <form:input path="lucky"/>
-            </dd>
-        </dl>
+        <span class="money">Payed in fact:</span>
+        <form:input path="payed" cssClass="money"/>
+        <span class="spaces">     </span>
+        <span class="money">Lucky hours:</span>
+        <form:input path="lucky" cssClass="money"/>
+        <br><br>
         <input class="myInput" type="submit" value="Save">
     </form:form>
+    </div>
 </section>
 <hr>
 <table class="myTable">

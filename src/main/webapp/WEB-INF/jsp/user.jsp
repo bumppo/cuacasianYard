@@ -9,14 +9,14 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="mySpan">Back to Visitors List</span></a></h2>
-    <h2><a href="${pageContext.request.contextPath}/meals"><span class="mySpan">Show Meal List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back to Visitors List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Show Meal List</span></a></h2>
 </div>
 <hr>
 <section>
     <jsp:useBean id="user" type="model.User" scope="request"/>
     <c:set var="total" value="${0}"/>
-    <h1 style="color:#d2691e; text-align: center"><span class="mySpan">${user.name}</span></h1>
+    <h1 style="color:#d2691e; text-align: center"><span class="header">${user.name}</span></h1>
     <table class="myTable">
         <thead>
         <tr>
@@ -36,13 +36,11 @@
             </tr>
         </c:forEach>
         <tr>
-            <th>Tips</th>
-            <th></th>
+            <th colspan="2">Tips</th>
             <th><fmt:formatNumber value="${tipsPerUser}" maxFractionDigits="0"/></th>
         </tr>
         <tr>
-            <th>Total</th>
-            <th>${total}</th>
+            <th colspan="2">Total</th>
             <th><fmt:formatNumber value="${total*(1-toMoney.discount/100)+tipsPerUser}" maxFractionDigits="0"/></th>
         </tr>
         </tbody>

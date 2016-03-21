@@ -8,10 +8,10 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/meals"><span class="mySpan">Show Meal List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Show Meal List</span></a></h2>
 </div>
 <hr>
-<h1 style="text-align:center"><span class="mySpan">Visitors List</span></h1>
+<h1 style="text-align:center"><span class="header">Visitors List</span></h1>
 <table class="myTable">
     <thead>
     <tr>

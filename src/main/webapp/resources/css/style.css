@@ -44,14 +44,57 @@ input.myInput {
     border-style: solid;
     border-color: #3F250B;
 }
+input.money {
+    font-family: verdana,arial,sans-serif;
+    font-size:20px;
+    font-weight: bold;
+    background-color: white;
+    width: 80px;
+    color: #3F250B;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3F250B;
+}
+.editForm {
+    font-family: verdana,arial,sans-serif;
+    font-size:25px;
+    background-color: white;
+    color: #3F250B;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3F250B;
+}
 div.myHeader {
     display: flex;
     justify-content: space-between;
 }
-span.mySpan {
+span.header {
     background-color: #dcddc0;
     color: #3F250B;
     border-width: 1px;
     border-style: solid;
     border-color: #3F250B;
+}
+span.money {
+    font-family: verdana,arial,sans-serif;
+    font-size:20px;
+    font-weight: bold;
+    background-color: #dcddc0;
+    color: #3F250B;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3F250B;
+}
+span.editForm {
+    font-family: verdana,arial,sans-serif;
+    font-size:25px;
+    font-weight: bold;
+    background-color: #dcddc0;
+    color: #3F250B;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3F250B;
+}
+span.spaces {
+    white-space: pre;
 }

@@ -8,36 +8,30 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/meals"><span class="mySpan">Back to Meal List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Back to Meal List</span></a></h2>
 </div>
 <hr>
 <section>
+    <div class="myDiv">
     <form:form modelAttribute="meal" id="meal" method="post" action="${pageContext.request.contextPath}/meals" >
         <form:hidden path="id"/>
-        <dl>
-            <dt><span class="mySpan">Meal's description:</span></dt>
-            <dd>
-                <form:input path="description"/>
-            </dd>
-        </dl>
-        <dl>
-            <dt><span class="mySpan">Meal's cost:</span></dt>
-            <dd>
-                <form:input path="cost"/>
-            </dd>
-        </dl>
-        <dl>
-            <dt><span class="mySpan">Visitor:</span></dt>
-            <dd>
-                <form:select path="user" id="user">
-                    <form:option value="0" label="---Select Visitor---"/>
-                    <form:options items="${userList}" itemValue="id" itemlabel="name"/>
-                </form:select>
-            </dd>
-        </dl>
-        <button type="submit">Save</button>
-        <button onclick="window.history.back()">Cancel</button>
+        <span class="editForm">Meal's description:</span>
+        <form:input path="description" cssClass="editForm"/>
+        <span class="spaces">     </span>
+        <span class="editForm">Meal's cost:</span>
+        <form:input path="cost" cssClass="editForm" cssStyle="width:100px"/>
+        <span class="spaces">     </span>
+        <span class="editForm">Visitor:</span>
+        <form:select path="user" id="user" cssClass="editForm">
+            <form:option value="0" label="---Select Visitor---"/>
+            <form:options items="${userList}" itemValue="id" itemlabel="name"/>
+        </form:select>
+        <br><br>
+        <input class="myInput" type="submit" value="Save">
+        <span class="spaces">                           </span>
+        <input class="myInput" type="button" onclick="window.history.back()" value="Cancel">
     </form:form>
+    </div>
 </section>
 </body>
 </html>

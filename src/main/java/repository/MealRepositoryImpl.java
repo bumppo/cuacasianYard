@@ -24,6 +24,8 @@ public class MealRepositoryImpl implements MealRepository {
         List<Meal> list = proxy.findAll();
 //        Comparator<Meal> comparator = (m, o) -> m.getUser().getName().compareTo(o.getUser().getName());
 //        list.sort(comparator);
+        Comparator<Meal> comparator = (m, o) -> m.getId().compareTo(o.getId());
+        list.sort(comparator);
         return list;
     }
 

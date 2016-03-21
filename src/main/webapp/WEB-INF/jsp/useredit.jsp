@@ -7,20 +7,22 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="mySpan">Back to Visitors List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back to Visitors List</span></a></h2>
 </div>
 <hr>
 <section>
+    <div class="myDiv">
     <jsp:useBean id="user" type="model.User" scope="request"/>
     <form method="post" action="${pageContext.request.contextPath}/users">
         <input type="hidden" name="id" value="${user.id}">
-        <dl>
-            <dt><span class="mySpan">Visitor's name:</span></dt>
-            <dd><input type="text" name="name" value="${user.name}" required></dd>
-        </dl>
-        <button type="submit">Save</button>
-        <button onclick="window.history.back()">Cancel</button>
+        <span class="editForm">Visitor's name:</span>
+        <input class="editForm" type="text" name="name" value="${user.name}" style="width:250px" required>
+        <br><br>
+        <input class="myInput" type="submit" value="Save">
+        <span class="spaces">                           </span>
+        <input class="myInput" type="button" onclick="window.history.back()" value="Cancel">
     </form>
+    </div>
 </section>
 </body>
 </html>

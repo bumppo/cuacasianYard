@@ -41,12 +41,12 @@ public class MealController {
         List<Meal> mealList = service.getAll();
         TOMoney toMoney = moneyService.get();
 
-        int sumWithOutDiscont = 0;
+        int sumWithOutDiscount = 0;
         for (int i = 0; i < mealList.size(); i++) {
-            sumWithOutDiscont += mealList.get(i).getCost();
+            sumWithOutDiscount += mealList.get(i).getCost();
         }
-        toMoney.setSumWithOutDiscount(sumWithOutDiscont);
-        toMoney.setSumWithDiscount(sumWithOutDiscont + toMoney.getLucky());
+        toMoney.setSumWithOutDiscount(sumWithOutDiscount);
+        toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
         toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
         toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
 
