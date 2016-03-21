@@ -8,8 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import service.MealService;
+import service.MoneyService;
 import service.UserService;
+import to.TOMoney;
 import util.UserPropertyEditor;
+
+import java.util.List;
 
 /**
  * Created by VMoskalik on 18.03.2016.
@@ -24,6 +28,9 @@ public class MealController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    MoneyService moneyService;
+
     @InitBinder
     public void initBinderUser(WebDataBinder binder){
         binder.registerCustomEditor(User.class, new UserPropertyEditor());
@@ -31,7 +38,20 @@ public class MealController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getAll(Model model){
-        model.addAttribute("mealList", service.getAll());
+        List<Meal> mealList = service.getAll();
+        TOMoney toMoney = moneyService.get();
+
+        int sumWithOutDiscont = 0;
+        for (int i = 0; i < mealList.size(); i++) {
+            sumWithOutDiscont += mealList.get(i).getCost();
+        }
+        toMoney.setSumWithOutDiscount(sumWithOutDiscont);
+        toMoney.setSumWithDiscount(sumWithOutDiscont + toMoney.getLucky());
+        toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
+        toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
+
+        model.addAttribute("toMoney", toMoney);
+        model.addAttribute("mealList", mealList);
         return "mealList";
     }
 

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -20,7 +21,8 @@
         <thead>
         <tr>
             <th>Description</th>
-            <th>Cost</th>
+            <th>Cost without discount</th>
+            <th>Cost with discount</th>
         </tr>
         </thead>
         <tbody>
@@ -30,11 +32,18 @@
             <tr>
                 <td> ${meal.description} </td>
                 <td> ${meal.cost} </td>
+                <td><fmt:formatNumber value="${meal.cost*(1-toMoney.discount/100)}" maxFractionDigits="0"/></td>
             </tr>
         </c:forEach>
         <tr>
+            <th>Tips</th>
+            <th></th>
+            <th><fmt:formatNumber value="${tipsPerUser}" maxFractionDigits="0"/></th>
+        </tr>
+        <tr>
             <th>Total</th>
             <th>${total}</th>
+            <th><fmt:formatNumber value="${total*(1-toMoney.discount/100)+tipsPerUser}" maxFractionDigits="0"/></th>
         </tr>
         </tbody>
     </table>

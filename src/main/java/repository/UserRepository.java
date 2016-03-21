@@ -11,7 +11,7 @@ public interface UserRepository {
 
     List<User> getAll();
 
-    //null if not founf
+    //null if not found
     User get(int id);
 
     User getWithMeals(int id);
