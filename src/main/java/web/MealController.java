@@ -75,17 +75,6 @@ public class MealController {
         return "redirect:/meals";
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public String createOrUpdate(@RequestParam(value = "id", required = false) int id,
-//                                 @RequestParam("user_id") int user_id,
-//                                 @RequestParam("description") String description,
-//                                 @RequestParam("cost") int cost) {
-//        Meal mealFromForm = new Meal(id, description, cost);
-//        mealFromForm.setUser(userService.get(user_id));
-//        service.save(mealFromForm);
-//        return "redirect:/meals";
-//    }
-
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam("id") int id){
         service.delete(id);

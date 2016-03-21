@@ -22,8 +22,8 @@ public class MealRepositoryImpl implements MealRepository {
     @Override
     public List<Meal> getAll() {
         List<Meal> list = proxy.findAll();
-        Comparator<Meal> comparator = (m, o) -> m.getUser().getName().compareTo(o.getUser().getName());
-        list.sort(comparator);
+//        Comparator<Meal> comparator = (m, o) -> m.getUser().getName().compareTo(o.getUser().getName());
+//        list.sort(comparator);
         return list;
     }
 
