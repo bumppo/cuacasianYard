@@ -55,12 +55,6 @@ public class MealController {
         return "mealList";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String get(Model model, @PathVariable("id") int id){
-        model.addAttribute("meal", service.get(id));
-        return "meal";
-    }
-
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String editForCreate(Model model){
         model.addAttribute("meal", new Meal());
