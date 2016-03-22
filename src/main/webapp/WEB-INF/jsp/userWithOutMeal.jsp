@@ -13,10 +13,9 @@
 <hr>
 <section>
     <jsp:useBean id="user" type="model.User" scope="request"/>
-    <h1 style="color:#d2691e; text-align: center"><span class="header">${user.name}</span></h1>
-    <br><br><br><br>
-    <h1 style="color:red; text-align: center"><span class="header">На диете!!!</span></h1>
+    <h1 style="text-align: center"><span class="header">${user.name}</span></h1>
+    <br><br><br>
+    <h1 style="text-align: center"><span class="header">На диете!!!</span></h1>
 </section>
-
 </body>
 </html>

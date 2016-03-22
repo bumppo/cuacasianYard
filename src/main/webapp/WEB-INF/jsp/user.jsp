@@ -16,7 +16,7 @@
 <section>
     <jsp:useBean id="user" type="model.User" scope="request"/>
     <c:set var="total" value="${0}"/>
-    <h1 style="color:#d2691e; text-align: center"><span class="header">${user.name}</span></h1>
+    <h1 style="text-align: center"><span class="header">${user.name}</span></h1>
     <table class="myTable">
         <thead>
         <tr>

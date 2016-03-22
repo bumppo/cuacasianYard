@@ -38,16 +38,16 @@ public class UserController {
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public String get(Model model, @PathVariable("id") int id){
         User user = service.getWithMeals(id);
-        if (user == null){
-            model.addAttribute("user", service.get(id));
+        model.addAttribute("user", user);
+        if (user.getMeals().size() == 0){
             return "userWithOutMeal";
         } else {
             List<Meal> mealList = mealService.getAll();
             TOMoney toMoney = moneyService.get();
 
             int sumWithOutDiscount = 0;
-            for (int i = 0; i < mealList.size(); i++) {
-                sumWithOutDiscount += mealList.get(i).getCost();
+            for (Meal meal : mealList) {
+                sumWithOutDiscount += meal.getCost();
             }
             toMoney.setSumWithOutDiscount(sumWithOutDiscount);
             toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
@@ -56,7 +56,6 @@ public class UserController {
 
             model.addAttribute("tipsPerUser", (float)toMoney.getTips()/service.getAll().size());
             model.addAttribute("toMoney", toMoney);
-            model.addAttribute("user", user);
             return "user";
         }
     }

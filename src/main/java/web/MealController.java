@@ -42,8 +42,8 @@ public class MealController {
         TOMoney toMoney = moneyService.get();
 
         int sumWithOutDiscount = 0;
-        for (int i = 0; i < mealList.size(); i++) {
-            sumWithOutDiscount += mealList.get(i).getCost();
+        for (Meal meal : mealList) {
+            sumWithOutDiscount += meal.getCost();
         }
         toMoney.setSumWithOutDiscount(sumWithOutDiscount);
         toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
