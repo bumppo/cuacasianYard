@@ -64,13 +64,13 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String editForCreate(Model model){
         model.addAttribute("user", new User());
-        return "userEdit";
+        return "userEdit-333";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String editForUpdate(Model model, @RequestParam("id") int id){
         model.addAttribute("user", service.get(id));
-        return "userEdit";
+        return "userEdit-333";
     }
 
     @RequestMapping(method = RequestMethod.POST)
