@@ -37,22 +37,28 @@ public class UserController {
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public String get(Model model, @PathVariable("id") int id){
-        List<Meal> mealList = mealService.getAll();
-        TOMoney toMoney = moneyService.get();
+        User user = service.getWithMeals(id);
+        if (user == null){
+            model.addAttribute("user", service.get(id));
+            return "userWithOutMeal";
+        } else {
+            List<Meal> mealList = mealService.getAll();
+            TOMoney toMoney = moneyService.get();
 
-        int sumWithOutDiscount = 0;
-        for (int i = 0; i < mealList.size(); i++) {
-            sumWithOutDiscount += mealList.get(i).getCost();
+            int sumWithOutDiscount = 0;
+            for (int i = 0; i < mealList.size(); i++) {
+                sumWithOutDiscount += mealList.get(i).getCost();
+            }
+            toMoney.setSumWithOutDiscount(sumWithOutDiscount);
+            toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
+            toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
+            toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
+
+            model.addAttribute("tipsPerUser", (float)toMoney.getTips()/service.getAll().size());
+            model.addAttribute("toMoney", toMoney);
+            model.addAttribute("user", user);
+            return "user";
         }
-        toMoney.setSumWithOutDiscount(sumWithOutDiscount);
-        toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
-        toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
-        toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
-
-        model.addAttribute("tipsPerUser", (float)toMoney.getTips()/service.getAll().size());
-        model.addAttribute("toMoney", toMoney);
-        model.addAttribute("user", service.getWithMeals(id));
-        return "user";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
