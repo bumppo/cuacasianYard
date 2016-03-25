@@ -7,12 +7,12 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back to Visitors List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back caucasianYard.to Visitors List</span></a></h2>
 </div>
 <hr>
 <section>
     <div class="myDiv">
-    <jsp:useBean id="user" type="model.User" scope="request"/>
+    <jsp:useBean id="user" type="caucasianYard.model.User" scope="request"/>
     <form method="post" action="${pageContext.request.contextPath}/users">
         <input type="hidden" name="id" value="${user.id}">
         <span class="editForm">Visitor's name:</span>

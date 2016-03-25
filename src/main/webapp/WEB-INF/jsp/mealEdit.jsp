@@ -8,7 +8,7 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Back to Meal List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Back caucasianYard.to Meal List</span></a></h2>
 </div>
 <hr>
 <section>

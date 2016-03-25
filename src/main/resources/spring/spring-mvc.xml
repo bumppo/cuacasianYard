@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <bean class="web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
+    <bean class="caucasianYard.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -29,9 +29,9 @@
 
     <!--<mvc:annotation-driven/>-->
 
-    <context:component-scan base-package="web"/>
+    <context:component-scan base-package="caucasianYard.web"/>
 
-    <!--all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files-->
+    <!--all resources inside folder src/main/webapp/resources are mapped so they can be referred caucasianYard.to inside JSP files-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"

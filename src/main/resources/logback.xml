@@ -9,7 +9,7 @@
     <jmxConfigurator/>
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
-        <file>${TOPJAVA_ROOT}/log/topjava.log</file>
+        <file>${LOG_ROOT}/caucasianYard.log</file>
 
         <encoder>
             <charset>UTF-8</charset>
@@ -25,7 +25,7 @@
     </appender>
 
     <logger name="org.springframework.web" level="DEBUG"/>
-    <logger name="ru.javawebinar.topjava" level="DEBUG"/>
+    <logger name="caucasianYard." level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="file"/>

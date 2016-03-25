@@ -21,7 +21,7 @@
     </thead>
     <tbody>
     <c:forEach items="${userList}" var="tempUser">
-        <jsp:useBean id="user" class="model.User" scope="page"/>
+        <jsp:useBean id="user" class="caucasianYard.model.User" scope="page"/>
         <tr>
             <c:url var="editUrl" value="/users/update?id=${tempUser.id}" />
             <c:url var="deleteUrl" value="/users/delete?id=${tempUser.id}" />

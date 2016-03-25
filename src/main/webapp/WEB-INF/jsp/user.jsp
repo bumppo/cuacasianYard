@@ -9,12 +9,12 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back to Visitors List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back caucasianYard.to Visitors List</span></a></h2>
     <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Show Meal List</span></a></h2>
 </div>
 <hr>
 <section>
-    <jsp:useBean id="user" type="model.User" scope="request"/>
+    <jsp:useBean id="user" type="caucasianYard.model.User" scope="request"/>
     <c:set var="total" value="${0}"/>
     <h1 style="text-align: center"><span class="header">${user.name}</span></h1>
     <table class="myTable">
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         <c:forEach items="${user.meals}" var="meal">
-            <jsp:useBean id="meal" class="model.Meal" scope="page"/>
+            <jsp:useBean id="meal" class="caucasianYard.model.Meal" scope="page"/>
             <c:set var="total" value="${total + meal.cost}"/>
             <tr>
                 <td> ${meal.description} </td>

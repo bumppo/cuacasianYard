@@ -11,6 +11,6 @@
     <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Show Meal List</span></a></h2>
 </div>
 <hr>
-<h1 style="text-align:center;"><span class="header">Welcome to Caucasian Yard</span></h1>
+<h1 style="text-align:center;"><span class="header">Welcome caucasianYard.to Caucasian Yard</span></h1>
 </body>
 </html>
