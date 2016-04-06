@@ -1,4 +1,5 @@
 DELETE FROM users;
+DELETE FROM money;
 ALTER SEQUENCE global_seq RESTART WITH 100;
 
 INSERT INTO users(name) VALUES

@@ -13,7 +13,7 @@
     http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 
-    <!--<context:property-placeholder location="classpath:db/postgres.properties"/>-->
+    <context:property-placeholder location="classpath:db/postgres.properties"/>
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
         <jdbc:script location="classpath:db/initDB.sql"/>
