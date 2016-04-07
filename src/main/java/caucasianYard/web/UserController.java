@@ -2,6 +2,7 @@ package caucasianYard.web;
 
 import caucasianYard.model.Meal;
 import caucasianYard.model.User;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,7 +69,11 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String editForUpdate(Model model, @RequestParam("id") int id){
-        model.addAttribute("user", service.get(id));
+        try {
+            model.addAttribute("user", service.get(id));
+        } catch (NotFoundException e){
+            e.printStackTrace();
+        }
         return "userEdit";
     }
 
@@ -81,7 +86,11 @@ public class UserController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam("id") int id){
-        service.delete(id);
+        try {
+            service.delete(id);
+        } catch (NotFoundException e){
+            e.printStackTrace();
+        }
         return "redirect:/users";
     }
 }

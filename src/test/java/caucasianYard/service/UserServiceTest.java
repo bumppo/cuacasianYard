@@ -1,11 +1,14 @@
 package caucasianYard.service;
 
 import caucasianYard.model.User;
+import caucasianYard.util.exception.NotFoundException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+
+import java.util.Arrays;
 
 import static caucasianYard.UserTestData.*;
 
@@ -31,27 +34,50 @@ public class UserServiceTest  extends AbstractServiceTest{
 
     @Test
     public void testGetAll() throws Exception {
-
+        USER_MATCHER.assertCollectionEquals(USERS, service.getAll());
     }
 
     @Test
     public void testGet() throws Exception {
         User actual = service.get(USER1_ID);
-        MATCHER.assertEquals(USER1, actual);
+        USER_MATCHER.assertEquals(USER1, actual);
+    }
+
+    @Test
+    public void testGetNotFound() throws Exception {
+        thrown.expect(NotFoundException.class);
+        service.get(0);
     }
 
     @Test
     public void testGetWithMeals() throws Exception {
-
+        User user = service.getWithMeals(USER1_ID);
+        USER_MATCHER.assertEquals(USER1, user);
+        //                                                                  !!!Compare meals here!!!
     }
 
     @Test
     public void testSave() throws Exception {
+        User created = getCreated();
+        service.save(created);
+        USER_MATCHER.assertCollectionEquals(Arrays.asList(USER2, USER3, USER1, USER4, USER6, created, USER5), service.getAll());
+    }
 
+    @Test
+    public void testSaveDuplicate() throws Exception {
+        thrown.expect(org.springframework.dao.DataIntegrityViolationException.class);
+        service.save(getDuplicate());
     }
 
     @Test
     public void testDelete() throws Exception {
+        service.delete(USER1_ID);
+        USER_MATCHER.assertCollectionEquals(Arrays.asList(USER2, USER3, USER4, USER6, USER5), service.getAll());
+    }
 
+    @Test
+    public void testDeleteNotFound() throws Exception {
+        thrown.expect(NotFoundException.class);
+        service.delete(0);
     }
 }

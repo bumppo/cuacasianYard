@@ -1,6 +1,7 @@
 package caucasianYard.web;
 
 import caucasianYard.model.Meal;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +28,12 @@ public class RestMealController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Meal get(@PathVariable("id") int id){
-        return service.get(id);
+        try {
+            return service.get(id);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -42,6 +48,10 @@ public class RestMealController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") int id){
-        service.delete(id);
+        try {
+            service.delete(id);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

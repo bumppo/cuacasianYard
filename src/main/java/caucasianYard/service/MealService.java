@@ -1,6 +1,7 @@
 package caucasianYard.service;
 
 import caucasianYard.model.Meal;
+import javassist.NotFoundException;
 
 import java.util.List;
 
@@ -11,11 +12,11 @@ public interface MealService {
 
     List<Meal> getAll();
 
-    Meal get (int id);
+    Meal get (int id) throws NotFoundException;
 
     Meal save(Meal meal);
 
     void update (Meal meal);
 
-    void delete(int id);
+    void delete(int id) throws NotFoundException;
 }

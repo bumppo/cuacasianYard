@@ -60,6 +60,9 @@ public class Meal extends BaseEntity {
 
     @Override
     public String toString() {
-        return this.description + "_" + this.cost;
+        return "Meal{" +
+                "description=" + description + ", " +
+                "cost=" + cost +
+                "}";
     }
 }

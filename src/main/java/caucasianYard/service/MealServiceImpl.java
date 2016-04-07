@@ -1,6 +1,7 @@
 package caucasianYard.service;
 
 import caucasianYard.model.Meal;
+import caucasianYard.util.exception.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class MealServiceImpl implements MealService {
 
     @Override
     public Meal get(int id) {
-        return repository.get(id);
+        return ExceptionUtil.check(repository.get(id), id);
     }
 
     @Override
@@ -43,6 +44,6 @@ public class MealServiceImpl implements MealService {
     @Override
     @Transactional
     public void delete(int id) {
-        repository.delete(id);
+        ExceptionUtil.check(repository.delete(id), id);
     }
 }

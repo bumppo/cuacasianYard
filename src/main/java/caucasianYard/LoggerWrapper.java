@@ -1,5 +1,6 @@
 package caucasianYard;
 
+import caucasianYard.util.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,8 +70,8 @@ public class LoggerWrapper {
         return new UnsupportedOperationException(msg);
     }
 
-//    public NotFoundException getNotFoundException(String reason) {
-//        logger.error(reason);
-//        return new NotFoundException(reason);
-//    }
+    public NotFoundException getNotFoundException(String reason) {
+        logger.error(reason);
+        return new NotFoundException(reason);
+    }
 }
