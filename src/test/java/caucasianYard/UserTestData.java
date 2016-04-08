@@ -1,6 +1,7 @@
 package caucasianYard;
 
 import caucasianYard.matcher.ModelMatcher;
+import caucasianYard.model.Meal;
 import caucasianYard.model.User;
 
 import java.util.Arrays;

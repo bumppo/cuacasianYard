@@ -4,6 +4,7 @@ import caucasianYard.matcher.ModelMatcher;
 import caucasianYard.model.Meal;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static caucasianYard.UserTestData.*;
@@ -29,4 +30,6 @@ public class MealTestData {
         created.setUser(USER1);
         return created;
     }
+
+    public static final List<Meal> USER1_MEALS = Collections.singletonList(MEAL1);
 }

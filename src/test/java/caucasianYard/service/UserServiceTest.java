@@ -11,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import java.util.Arrays;
 
 import static caucasianYard.UserTestData.*;
+import static caucasianYard.MealTestData.USER1_MEALS;
+import static caucasianYard.MealTestData.MEAL_MATCHER;
 
 
 @ContextConfiguration({
@@ -21,6 +23,9 @@ public class UserServiceTest  extends AbstractServiceTest{
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private MealService mealService;
 
     @Before
     public void setUp() throws Exception {
@@ -53,7 +58,7 @@ public class UserServiceTest  extends AbstractServiceTest{
     public void testGetWithMeals() throws Exception {
         User user = service.getWithMeals(USER1_ID);
         USER_MATCHER.assertEquals(USER1, user);
-        //                                                                  !!!Compare meals here!!!
+        MEAL_MATCHER.assertCollectionEquals(USER1_MEALS, user.getMeals());
     }
 
     @Test
