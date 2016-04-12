@@ -4,6 +4,7 @@ import caucasianYard.model.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,12 +19,7 @@ public class MealRepositoryImpl implements MealRepository {
 
     @Override
     public List<Meal> getAll() {
-        List<Meal> list = proxy.findAll();
-//        Comparator<Meal> comparator = (m, o) -> m.getUser().getName().compareTo(o.getUser().getName());
-//        list.sort(comparator);
-        Comparator<Meal> comparator = (m, o) -> m.getId().compareTo(o.getId());
-        list.sort(comparator);
-        return list;
+        return proxy.findAll();
     }
 
     @Override
