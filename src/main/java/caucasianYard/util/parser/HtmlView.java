@@ -34,7 +34,6 @@ public class HtmlView {
             Document doc = getDocument();
             doc.select("tr[class=\"menu_meal\"]").remove();
 
-
             for (MenuMeal menuMeal : meals) {
                 Element mealElement = template.clone();
                 mealElement.select("td[class=\"description\"]").first().text(menuMeal.getDescription());
