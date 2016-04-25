@@ -3,7 +3,7 @@ package caucasianYard.service;
 import caucasianYard.model.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import caucasianYard.repository.MoneyRepository;
+import caucasianYard.repository.money.MoneyRepository;
 import caucasianYard.to.TOMoney;
 
 /**

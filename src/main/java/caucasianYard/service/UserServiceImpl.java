@@ -5,13 +5,14 @@ import caucasianYard.util.exception.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import caucasianYard.repository.UserRepository;
+import caucasianYard.repository.user.UserRepository;
 
 import java.util.List;
 
 /**
  * Created by VMoskalik on 03.03.2016.
  */
+
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {

@@ -1,5 +1,6 @@
 DELETE FROM users;
 DELETE FROM money;
+DELETE FROM menu;
 ALTER SEQUENCE global_seq RESTART WITH 100;
 
 INSERT INTO users(name) VALUES
@@ -30,3 +31,27 @@ INSERT INTO meals(description, cost, user_id) VALUES
 
 INSERT INTO money(payed_in_fact, lucky_hours) VALUES
   (2500, -900);
+
+INSERT INTO menu(name) VALUES
+  ('Салаты'),
+  ('Первые блюда'),
+  ('Вторые блюда из мяса'),
+  ('Вторые блюда из рыбы'),
+  ('Вторые блюда из птицы'),
+  ('Вторые блюда из овощей'),
+  ('Шашлыки'),
+  ('Гарниры'),
+  ('Напитки'),
+  ('Прочее');
+
+INSERT INTO menu_meal(description, cost, menu_id) VALUES
+  ('салат',100,113),
+  ('первое',100,114),
+  ('мясо',100,115),
+  ('рыба',100,116),
+  ('птица',100,117),
+  ('овощи',100,118),
+  ('шашлык',100,119),
+  ('гарнир',100,120),
+  ('напиток',100,121),
+  ('прочее',100,122);

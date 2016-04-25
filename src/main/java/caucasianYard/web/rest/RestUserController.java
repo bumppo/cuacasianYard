@@ -1,4 +1,4 @@
-package caucasianYard.web;
+package caucasianYard.web.rest;
 
 import caucasianYard.model.User;
 import javassist.NotFoundException;

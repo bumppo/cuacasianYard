@@ -1,11 +1,10 @@
-package caucasianYard.repository;
+package caucasianYard.repository.meal;
 
 import caucasianYard.model.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-import java.util.Comparator;
 import java.util.List;
 
 /**

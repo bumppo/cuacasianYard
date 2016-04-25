@@ -1,4 +1,4 @@
-package caucasianYard.repository;
+package caucasianYard.repository.user;
 
 import caucasianYard.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by VMoskalik on 03.03.2016.
  */
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 

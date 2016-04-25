@@ -1,4 +1,4 @@
-package caucasianYard.repository;
+package caucasianYard.repository.user;
 
 import caucasianYard.model.User;
 import org.springframework.data.domain.Sort;

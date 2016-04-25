@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-    <title>User without Meal</title>
+    <title>Menu</title>
 </head>
 <body class="myBody">
 <div class="myHeader">
@@ -14,10 +15,16 @@
 </div>
 <hr>
 <section>
-    <jsp:useBean id="user" type="caucasianYard.model.User" scope="request"/>
-    <h1 style="text-align: center"><span class="header">${user.name}</span></h1>
-    <br><br><br>
-    <h1 style="text-align: center"><span class="header">На диете!!!</span></h1>
+    <table class="myTable">
+        <tbody>
+        <c:forEach items="${menu}" var="menuItem">
+            <jsp:useBean id="menuItem" class="caucasianYard.model.Menu" scope="page"/>
+            <tr>
+                <td><a href="${pageContext.request.contextPath}/menu/${menuItem.id}"> ${menuItem.name} </a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </section>
 </body>
 </html>

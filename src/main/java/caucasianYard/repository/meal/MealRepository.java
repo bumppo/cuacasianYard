@@ -1,4 +1,4 @@
-package caucasianYard.repository;
+package caucasianYard.repository.meal;
 
 import caucasianYard.model.Meal;
 

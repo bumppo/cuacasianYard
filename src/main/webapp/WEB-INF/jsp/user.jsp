@@ -9,8 +9,10 @@
 </head>
 <body class="myBody">
 <div class="myHeader">
-    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Back caucasianYard.to Visitors List</span></a></h2>
-    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Show Meal List</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}"><span class="header">Home</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/menu"><span class="header">Menu</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/users"><span class="header">Visitors</span></a></h2>
+    <h2><a href="${pageContext.request.contextPath}/meals"><span class="header">Meals</span></a></h2>
 </div>
 <hr>
 <section>

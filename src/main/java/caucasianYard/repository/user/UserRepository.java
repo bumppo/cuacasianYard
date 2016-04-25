@@ -1,4 +1,4 @@
-package caucasianYard.repository;
+package caucasianYard.repository.user;
 
 import caucasianYard.model.User;
 
@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Created by VMoskalik on 02.03.2016.
  */
+
 public interface UserRepository {
 
     List<User> getAll();

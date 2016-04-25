@@ -1,4 +1,4 @@
-package caucasianYard.repository;
+package caucasianYard.repository.money;
 
 import caucasianYard.model.Money;
 import caucasianYard.to.TOMoney;
