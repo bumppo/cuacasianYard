@@ -1,34 +1,34 @@
-package caucasianYard.repository.meal;
+package caucasianYard.repository.menuMeal;
 
-import caucasianYard.model.Meal;
+import caucasianYard.model.MenuMeal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Created by VMoskalik on 03.03.2016.
+ * Created by VMoskalik on 26.04.2016.
  */
 
 @Repository
-public class MealRepositoryImpl implements MealRepository {
+public class MenuMealRepositoryImpl implements MenuMealRepository {
 
     @Autowired
-    ProxyMealRepository proxy;
+    private ProxyMenuMealRepository proxy;
 
     @Override
-    public List<Meal> getAll() {
+    public List<MenuMeal> getAll() {
         return proxy.findAll();
     }
 
     @Override
-    public Meal get(int id) {
+    public MenuMeal get(int id) {
         return proxy.findOne(id);
     }
 
     @Override
-    public Meal save(Meal meal) {
-        return proxy.save(meal);
+    public MenuMeal save(MenuMeal menuMeal) {
+        return proxy.save(menuMeal);
     }
 
     @Override
