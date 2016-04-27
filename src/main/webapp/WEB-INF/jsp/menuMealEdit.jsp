@@ -16,8 +16,9 @@
 <hr>
 <section>
     <div class="myDiv">
-        <form:form modelAttribute="menuMeal" id="menuMeal" method="post" action="${pageContext.request.contextPath}/menu">
+        <form:form modelAttribute="menuMeal" id="menuMeal" method="post" action="${pageContext.request.contextPath}/menuMeal">
             <form:hidden path="id"/>
+            <form:hidden path="menu.id"/>
             <span class="editForm">Menu meal's description:</span>
             <form:input path="description" cssClass="editForm"/>
             <span class="spaces">     </span>

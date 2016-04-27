@@ -1,7 +1,9 @@
 package caucasianYard.web;
 
+import caucasianYard.model.Meal;
 import caucasianYard.model.MenuMeal;
 import caucasianYard.service.MenuMealService;
+import caucasianYard.service.UserService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class MenuMealController {
     @Autowired
     MenuMealService service;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String editForCreate(Model model){
         model.addAttribute("menuMeal", new MenuMeal());
@@ -36,6 +41,24 @@ public class MenuMealController {
             e.printStackTrace();
         }
         return "menuMealEdit";
+    }
+
+    @RequestMapping(value = "/buy", method = RequestMethod.GET)
+    public String editForBuy(Model model, @RequestParam("id") int id, @RequestParam("menuId") int menuId){
+        Meal meal = new Meal();
+        MenuMeal menuMeal = new MenuMeal();
+        try {
+            menuMeal = service.get(id);
+        } catch (NotFoundException e){
+            e.printStackTrace();
+        }
+        meal.setDescription(menuMeal.getDescription());
+        meal.setCost(menuMeal.getCost());
+
+        model.addAttribute("meal", meal);
+        model.addAttribute("menuId", menuId);
+        model.addAttribute("userList", userService.getAll());
+        return "/mealEdit";
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -62,7 +62,7 @@ public class MealController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String editForUpdate(Model model, @RequestParam("id") int id){
+    public String editForUpdate(Model model, @RequestParam(value = "id") int id){
         try {
             model.addAttribute("meal", service.get(id));
         } catch (NotFoundException e) {
@@ -73,9 +73,11 @@ public class MealController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String createOrUpdate(@ModelAttribute("meal") Meal mealFromForm) {
+    public String createOrUpdateOrBuy(@ModelAttribute("meal") Meal mealFromForm, @RequestParam(value = "menuId", required = false) Integer menuId) {
         service.save(mealFromForm);
-        return "redirect:/meals";
+        if (menuId == null)
+            return "redirect:/meals";
+        else return "redirect:/menu/" + menuId;
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)

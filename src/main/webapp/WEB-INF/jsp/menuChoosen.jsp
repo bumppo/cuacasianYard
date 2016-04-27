@@ -40,9 +40,9 @@
         <c:forEach items="${menuChoosen.menuMeals}" var="menuMeal">
             <jsp:useBean id="menuMeal" class="caucasianYard.model.MenuMeal" scope="page"/>
             <tr>
-                <c:url var="buyUrl" value=""/>
-                <c:url var="editUrl" value=""/>
-                <c:url var="deleteUrl" value=""/>
+                <c:url var="buyUrl" value="/menuMeal/buy?id=${menuMeal.id}&menuId=${menuMeal.menu.id}"/>
+                <c:url var="editUrl" value="/menuMeal/update?id=${menuMeal.id}"/>
+                <c:url var="deleteUrl" value="/menuMeal/delete"/>
                 <td> ${menuMeal.description} </td>
                 <td> ${menuMeal.cost} </td>
                 <td><a href="${buyUrl}">Buy</a></td>

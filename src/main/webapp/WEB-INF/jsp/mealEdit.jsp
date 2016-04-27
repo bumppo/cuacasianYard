@@ -16,7 +16,7 @@
 <hr>
 <section>
     <div class="myDiv">
-    <form:form modelAttribute="meal" id="meal" method="post" action="${pageContext.request.contextPath}/meals" >
+    <form:form modelAttribute="meal" id="meal" method="post" action="${pageContext.request.contextPath}/meals?menuId=${menuId}" >
         <form:hidden path="id"/>
         <span class="editForm">Meal's description:</span>
         <form:input path="description" cssClass="editForm"/>
@@ -27,7 +27,7 @@
         <span class="editForm">Visitor:</span>
         <form:select path="user" id="user" cssClass="editForm">
             <form:option value="0" label="---Select Visitor---"/>
-            <form:options items="${userList}" itemValue="id" itemlabel="name"/>
+            <form:options items="${userList}" itemValue="id" itemLabel="name"/>
         </form:select>
         <br><br>
         <input class="myInput" type="submit" value="Save">

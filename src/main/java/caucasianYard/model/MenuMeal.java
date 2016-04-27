@@ -3,6 +3,7 @@ package caucasianYard.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by VMoskalik on 25.04.2016.
@@ -16,11 +17,11 @@ public class MenuMeal extends BaseMenuEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "cost", nullable = false)
-    private int cost;
+    private Integer cost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id", nullable = false)
     private Menu menu;
 
