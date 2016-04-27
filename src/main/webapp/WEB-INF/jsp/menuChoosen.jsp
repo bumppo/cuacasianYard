@@ -52,6 +52,12 @@
         </c:forEach>
         </tbody>
     </table>
+    <br>
+    <form action="${pageContext.request.contextPath}/menuMeal/create?menuId=${menuChoosen.id}">
+        <div class="myDiv">
+            <input class="myInput" type="submit" value="Add Meal to Menu">
+        </div>
+    </form>
 </section>
 </body>
 </html>

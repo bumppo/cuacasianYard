@@ -3,6 +3,7 @@ package caucasianYard.web;
 import caucasianYard.model.Meal;
 import caucasianYard.model.MenuMeal;
 import caucasianYard.service.MenuMealService;
+import caucasianYard.service.MenuService;
 import caucasianYard.service.UserService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,13 @@ public class MenuMealController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    MenuService menuService;
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String editForCreate(Model model){
+    public String editForCreate(Model model, @RequestParam("menuId") int menuId){
+        MenuMeal menuMeal = new MenuMeal();
+        menuMeal.setMenu(menuService.get(menuId));
         model.addAttribute("menuMeal", new MenuMeal());
         return "menuMealEdit";
     }
