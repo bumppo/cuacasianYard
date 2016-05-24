@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Repository
-public class MenuRepositoryImplWWW implements MenuRepository {
+public class MenuRepositoryImpl implements MenuRepository {
 
     @Autowired
     private ProxyMenuRepository proxy;
