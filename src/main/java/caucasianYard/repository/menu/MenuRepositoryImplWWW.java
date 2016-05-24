@@ -6,12 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by VMoskalik on 25.04.2016.
- */
 
 @Repository
-public class MenuRepositoryImpl implements MenuRepository {
+public class MenuRepositoryImplWWW implements MenuRepository {
 
     @Autowired
     private ProxyMenuRepository proxy;
