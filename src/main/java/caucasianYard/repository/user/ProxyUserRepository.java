@@ -1,6 +1,7 @@
 package caucasianYard.repository.user;
 
 import caucasianYard.model.User;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,7 +20,10 @@ public interface ProxyUserRepository extends JpaRepository<User, Integer> {
     @Override
     User findOne(Integer id);
 
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.meals WHERE u.id = ?1")
+    @Query("SELECT u FROM User u " +
+            "LEFT JOIN FETCH u.meals m " +
+            "LEFT JOIN FETCH u.commonMeals cm " +
+            "WHERE u.id = ?1")
     User getWithMeals(Integer id);
 
     @Override

@@ -13,22 +13,19 @@ import javax.validation.constraints.NotNull;
 public class Money extends BaseEntity{
 
     @NotNull
-    @Column(name = "payed_in_fact", nullable = false)
-    protected Integer payed;
-
+    private Integer payed;
     @NotNull
-    @Column(name = "lucky_hours", nullable = false)
-    protected Integer lucky;
+    private Integer lucky;
 
     public Money() {
     }
-
     public Money(Integer id, Integer payed, Integer lucky) {
         super(id);
         this.payed = payed;
         this.lucky = lucky;
     }
 
+    @Column(name = "payed_in_fact", nullable = false)
     public Integer getPayed() {
         return payed;
     }
@@ -37,6 +34,7 @@ public class Money extends BaseEntity{
         this.payed = payed;
     }
 
+    @Column(name = "lucky_hours", nullable = false)
     public Integer getLucky() {
         return lucky;
     }

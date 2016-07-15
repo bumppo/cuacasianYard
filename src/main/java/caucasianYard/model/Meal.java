@@ -10,38 +10,36 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "meals")
+@Table(name = "meal")
 public class Meal extends BaseEntity {
 
     @NotEmpty
-    @Column(name = "description", nullable = false)
     private String description;
-
-    @NotNull
-    @Column(name = "cost", nullable = false)
+    @NotEmpty
     private Integer cost;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = false)
+    @NotNull
     private User user;
 
     public Meal() {
     }
-
     public Meal(Integer id, String description, int cost){
         super(id);
         this.description = description;
         this.cost = cost;
     }
 
+    @Column(name = "description", nullable = false)
     public String getDescription() {
         return description;
     }
 
+    @Column(name = "cost", nullable = false)
     public Integer getCost() {
         return cost;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     public User getUser() {
         return user;
     }
@@ -49,11 +47,9 @@ public class Meal extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setCost(Integer cost) {
         this.cost = cost;
     }
-
     public void setUser(User user) {
         this.user = user;
     }

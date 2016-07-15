@@ -14,27 +14,26 @@ import javax.validation.constraints.NotNull;
 public class MenuMeal extends BaseMenuEntity {
 
     @NotEmpty
-    @Column(name = "description", nullable = false)
     private String description;
-
     @NotNull
-    @Column(name = "cost", nullable = false)
     private Integer cost;
+//    private Menu menu;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "menu_id", nullable = false)
-    private Menu menu;
-
+    @Column(name = "description", nullable = false)
     public String getDescription() {
         return description;
     }
+
+    @Column(name = "cost", nullable = false)
     public int getCost() {
         return cost;
     }
-    public Menu getMenu() {
-        return menu;
-    }
 
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "menu_id", nullable = false)
+//    public Menu getMenu() {
+//        return menu;
+//    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -42,7 +41,7 @@ public class MenuMeal extends BaseMenuEntity {
     public void setCost(int cost) {
         this.cost = cost;
     }
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
+//    public void setMenu(Menu menu) {
+//        this.menu = menu;
+//    }
 }

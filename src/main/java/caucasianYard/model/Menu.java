@@ -3,7 +3,7 @@ package caucasianYard.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by VMoskalik on 25.04.2016.
@@ -14,23 +14,23 @@ import java.util.List;
 public class Menu extends BaseMenuEntity {
 
     @NotEmpty
-    @Column(name = "name", nullable = false)
     private String name;
+    private Set<MenuMeal> menuMeals;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "menu")
-    private List<MenuMeal> menuMeals;
-
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
-    public List<MenuMeal> getMenuMeals() {
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    public Set<MenuMeal> getMenuMeals() {
         return menuMeals;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    public void setMenuMeals(List<MenuMeal> menuMeals) {
+    public void setMenuMeals(Set<MenuMeal> menuMeals) {
         this.menuMeals = menuMeals;
     }
 }

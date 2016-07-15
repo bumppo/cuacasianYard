@@ -1,8 +1,10 @@
-DROP TABLE IF EXISTS meals;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS meal;
+DROP TABLE IF EXISTS common_meal CASCADE;
+DROP TABLE IF EXISTS user_common_meal;
 DROP TABLE IF EXISTS money;
+DROP TABLE IF EXISTS menu CASCADE;
 DROP TABLE IF EXISTS menu_meal;
-DROP TABLE IF EXISTS menu;
 DROP SEQUENCE IF EXISTS global_seq;
 DROP SEQUENCE IF EXISTS menu_seq;
 
@@ -15,13 +17,28 @@ CREATE TABLE users
   name  VARCHAR UNIQUE NOT NULL
 );
 
-CREATE TABLE meals
+CREATE TABLE meal
 (
   id             INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   description    VARCHAR NOT NULL,
   cost           INTEGER NOT NULL,
   user_id        INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE TABLE common_meal
+(
+  id             INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  description    VARCHAR NOT NULL,
+  cost           INTEGER NOT NULL
+);
+
+CREATE TABLE user_common_meal
+(
+  user_fk        INTEGER NOT NULL,
+  common_meal_fk INTEGER NOT NULL,
+  FOREIGN KEY (user_fk) REFERENCES users (id),
+  FOREIGN KEY (common_meal_fk) REFERENCES common_meal (id)
 );
 
 CREATE TABLE money

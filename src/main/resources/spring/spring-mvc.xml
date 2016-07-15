@@ -27,8 +27,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--<mvc:annotation-driven/>-->
-
     <context:component-scan base-package="caucasianYard.web"/>
 
     <!--all resources inside folder src/main/webapp/resources are mapped so they can be referred caucasianYard.to inside JSP files-->
@@ -37,5 +35,8 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
+
+    <!--<bean class="caucasianYard.web.widgetsets.ui.MyUI"/>-->
+    <!--<bean class="caucasianYard.web.widgetsets.MyUIainConfiguration" />-->
 
 </beans>

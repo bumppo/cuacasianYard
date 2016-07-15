@@ -7,14 +7,13 @@ import javax.persistence.*;
  */
 
 @MappedSuperclass
-@Access(AccessType.FIELD)
 public class BaseMenuEntity {
+
+    private int id;
 
     @Id
     @SequenceGenerator(name = "menu_seq_sg", sequenceName = "menu_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menu_seq_sg")
-    private int id;
-
     public int getId() {
         return id;
     }

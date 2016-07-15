@@ -1,7 +1,12 @@
 DELETE FROM users;
+DELETE FROM meal;
+DELETE FROM common_meal;
+DELETE FROM user_common_meal;
 DELETE FROM money;
 DELETE FROM menu;
+DELETE FROM menu_meal;
 ALTER SEQUENCE global_seq RESTART WITH 100;
+ALTER SEQUENCE menu_seq RESTART WITH 100;
 
 INSERT INTO users(name) VALUES
   ('Виталик'),
@@ -11,7 +16,7 @@ INSERT INTO users(name) VALUES
   ('Шамиль'),
   ('Макс');
 
-INSERT INTO meals(description, cost, user_id) VALUES
+INSERT INTO meal(description, cost, user_id) VALUES
   ('Долма с виноградными листьями', 350, 100),
 --   ('Рис отварной', 70, 100),
   ('Рис отварной', 70, 102),
@@ -28,6 +33,17 @@ INSERT INTO meals(description, cost, user_id) VALUES
 --   ('Борщ', 180, 105),
 --   ('Компот', 60, 103),
   ('Жаркое Кав. Дворик', 360, 105);
+
+INSERT INTO common_meal(id, description, cost) VALUES
+  (200, 'Лепешка', 50),
+  (210, 'Хлеб', 30);
+
+INSERT INTO user_common_meal (user_fk, common_meal_fk) VALUES
+  (100, 200),
+  (100, 210),
+  (101, 200),
+  (102, 200),
+  (103, 210);
 
 INSERT INTO money(payed_in_fact, lucky_hours) VALUES
   (2500, -900);

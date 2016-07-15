@@ -8,16 +8,12 @@ import caucasianYard.model.Money;
 public class TOMoney extends Money {
 
     private Integer sumWithOutDiscount;
-
     private Integer sumWithDiscount;
-
     private Integer tips;
-
     private float discount;
 
     public TOMoney() {
     }
-
     public TOMoney(Integer id, Integer payed, Integer lucky) {
         super(id, payed, lucky);
     }

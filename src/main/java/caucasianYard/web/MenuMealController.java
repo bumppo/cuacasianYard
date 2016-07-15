@@ -34,7 +34,7 @@ public class MenuMealController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String editForCreate(Model model, @RequestParam("menuId") int menuId){
         MenuMeal menuMeal = new MenuMeal();
-        menuMeal.setMenu(menuService.get(menuId));
+//        menuMeal.setMenu(menuService.get(menuId));
         model.addAttribute("menuMeal", new MenuMeal());
         return "menuMealEdit";
     }
