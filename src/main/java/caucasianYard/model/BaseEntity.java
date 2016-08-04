@@ -8,11 +8,12 @@ import javax.persistence.*;
 
 @MappedSuperclass
 //@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
-public class BaseEntity {
+public abstract class BaseEntity {
 
     protected Integer id;
 
     public BaseEntity() {
+
     }
     public BaseEntity(Integer id) {
         this.id = id;

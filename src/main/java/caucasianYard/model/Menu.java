@@ -22,7 +22,9 @@ public class Menu extends BaseMenuEntity {
         return name;
     }
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "menu")
+//    @JoinColumn(name = "menu_id", nullable = false)
+    @OrderBy("description")
     public Set<MenuMeal> getMenuMeals() {
         return menuMeals;
     }

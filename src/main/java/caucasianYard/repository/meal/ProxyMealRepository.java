@@ -25,4 +25,7 @@ public interface ProxyMealRepository extends JpaRepository<Meal, Integer> {
     @Modifying
     @Query("DELETE FROM Meal m WHERE m.id = ?1")
     int delete(int id);
+
+    @Query("SELECT SUM(m.cost) FROM Meal m")
+    long getTotalSum();
 }

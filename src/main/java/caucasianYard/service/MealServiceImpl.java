@@ -47,4 +47,9 @@ public class MealServiceImpl implements MealService {
     public void delete(int id) {
         ExceptionUtil.check(repository.delete(id), id);
     }
+
+    @Override
+    public int getTotalSum() {
+        return repository.getTotalSum();
+    }
 }

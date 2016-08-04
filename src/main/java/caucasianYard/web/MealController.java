@@ -2,6 +2,7 @@ package caucasianYard.web;
 
 import caucasianYard.model.Meal;
 import caucasianYard.model.User;
+import caucasianYard.dto.MoneyDTO;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import caucasianYard.service.MealService;
 import caucasianYard.service.MoneyService;
 import caucasianYard.service.UserService;
-import caucasianYard.to.TOMoney;
 import caucasianYard.util.UserPropertyEditor;
 
 import java.util.List;
@@ -38,18 +38,18 @@ public class MealController {
     @RequestMapping(method = RequestMethod.GET)
     public String getAll(Model model){
         List<Meal> mealList = service.getAll();
-        TOMoney toMoney = moneyService.get();
+        MoneyDTO moneyDTO = moneyService.get();
 
         int sumWithOutDiscount = 0;
         for (Meal meal : mealList) {
             sumWithOutDiscount += meal.getCost();
         }
-        toMoney.setSumWithOutDiscount(sumWithOutDiscount);
-        toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
-        toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
-        toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
+        moneyDTO.setSumWithOutDiscount(sumWithOutDiscount);
+        moneyDTO.setSumWithDiscount(sumWithOutDiscount + moneyDTO.getLucky());
+        moneyDTO.setTips(moneyDTO.getPayed() - moneyDTO.getSumWithDiscount());
+        moneyDTO.setDiscount((float)-moneyDTO.getLucky()/ moneyDTO.getSumWithOutDiscount()*100);
 
-        model.addAttribute("toMoney", toMoney);
+        model.addAttribute("toMoney", moneyDTO);
         model.addAttribute("mealList", mealList);
         return "mealList";
     }

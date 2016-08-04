@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import caucasianYard.service.MealService;
 import caucasianYard.service.MoneyService;
 import caucasianYard.service.UserService;
-import caucasianYard.to.TOMoney;
+import caucasianYard.dto.MoneyDTO;
 
 import java.util.List;
 
@@ -45,19 +45,19 @@ public class UserController {
             return "userWithOutMeal";
         } else {
             List<Meal> mealList = mealService.getAll();
-            TOMoney toMoney = moneyService.get();
+            MoneyDTO moneyDTO = moneyService.get();
 
             int sumWithOutDiscount = 0;
             for (Meal meal : mealList) {
                 sumWithOutDiscount += meal.getCost();
             }
-            toMoney.setSumWithOutDiscount(sumWithOutDiscount);
-            toMoney.setSumWithDiscount(sumWithOutDiscount + toMoney.getLucky());
-            toMoney.setTips(toMoney.getPayed() - toMoney.getSumWithDiscount());
-            toMoney.setDiscount((float)-toMoney.getLucky()/toMoney.getSumWithOutDiscount()*100);
+            moneyDTO.setSumWithOutDiscount(sumWithOutDiscount);
+            moneyDTO.setSumWithDiscount(sumWithOutDiscount + moneyDTO.getLucky());
+            moneyDTO.setTips(moneyDTO.getPayed() - moneyDTO.getSumWithDiscount());
+            moneyDTO.setDiscount((float)-moneyDTO.getLucky()/ moneyDTO.getSumWithOutDiscount()*100);
 
-            model.addAttribute("tipsPerUser", (float)toMoney.getTips()/service.getAll().size());
-            model.addAttribute("toMoney", toMoney);
+            model.addAttribute("tipsPerUser", (float) moneyDTO.getTips()/service.getAll().size());
+            model.addAttribute("toMoney", moneyDTO);
             return "user";
         }
     }

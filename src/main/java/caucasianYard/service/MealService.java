@@ -20,4 +20,6 @@ public interface MealService {
     void update (Meal meal);
 
     void delete(int id) throws NotFoundException;
+
+    int getTotalSum();
 }

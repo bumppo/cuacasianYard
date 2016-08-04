@@ -15,7 +15,7 @@ public class Meal extends BaseEntity {
 
     @NotEmpty
     private String description;
-    @NotEmpty
+    @NotNull
     private Integer cost;
     @NotNull
     private User user;

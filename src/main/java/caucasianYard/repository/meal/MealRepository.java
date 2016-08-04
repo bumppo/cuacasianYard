@@ -19,4 +19,6 @@ public interface MealRepository {
 
     //false if not found
     boolean delete(int id);
+
+    int getTotalSum();
 }

@@ -1,7 +1,7 @@
 package caucasianYard.repository.money;
 
 import caucasianYard.model.Money;
-import caucasianYard.to.TOMoney;
+import caucasianYard.dto.MoneyDTO;
 
 /**
  * Created by VMoskalik on 21.03.2016.
@@ -9,7 +9,7 @@ import caucasianYard.to.TOMoney;
 
 public interface MoneyRepository {
 
-    TOMoney get();
+    Money get();
 
     Money save(Money money);
 }

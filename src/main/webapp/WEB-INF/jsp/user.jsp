@@ -34,7 +34,7 @@
             <tr>
                 <td> ${meal.description} </td>
                 <td> ${meal.cost} </td>
-                <td><fmt:formatNumber value="${meal.cost*(1-toMoney.discount/100)}" maxFractionDigits="0"/></td>
+                <td><fmt:formatNumber value="${meal.cost*(1-moneyDTO.discount/100)}" maxFractionDigits="0"/></td>
             </tr>
         </c:forEach>
         <tr>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <th colspan="2">Total</th>
-            <th><fmt:formatNumber value="${total*(1-toMoney.discount/100)+tipsPerUser}" maxFractionDigits="0"/></th>
+            <th><fmt:formatNumber value="${total*(1-moneyDTO.discount/100)+tipsPerUser}" maxFractionDigits="0"/></th>
         </tr>
         </tbody>
     </table>

@@ -19,11 +19,6 @@ public class Money extends BaseEntity{
 
     public Money() {
     }
-    public Money(Integer id, Integer payed, Integer lucky) {
-        super(id);
-        this.payed = payed;
-        this.lucky = lucky;
-    }
 
     @Column(name = "payed_in_fact", nullable = false)
     public Integer getPayed() {

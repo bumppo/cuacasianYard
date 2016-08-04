@@ -17,7 +17,8 @@ public class MenuMeal extends BaseMenuEntity {
     private String description;
     @NotNull
     private Integer cost;
-//    private Menu menu;
+    @NotNull
+    private Menu menu;
 
     @Column(name = "description", nullable = false)
     public String getDescription() {
@@ -29,11 +30,11 @@ public class MenuMeal extends BaseMenuEntity {
         return cost;
     }
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "menu_id", nullable = false)
-//    public Menu getMenu() {
-//        return menu;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "menu_id", nullable = false)
+    public Menu getMenu() {
+        return menu;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -41,7 +42,7 @@ public class MenuMeal extends BaseMenuEntity {
     public void setCost(int cost) {
         this.cost = cost;
     }
-//    public void setMenu(Menu menu) {
-//        this.menu = menu;
-//    }
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }

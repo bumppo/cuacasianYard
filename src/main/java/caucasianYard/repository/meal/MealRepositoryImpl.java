@@ -9,12 +9,11 @@ import java.util.List;
 /**
  * Created by VMoskalik on 03.03.2016.
  */
-
 @Repository
 public class MealRepositoryImpl implements MealRepository {
 
     @Autowired
-    ProxyMealRepository proxy;
+    private ProxyMealRepository proxy;
 
     @Override
     public List<Meal> getAll() {
@@ -34,5 +33,10 @@ public class MealRepositoryImpl implements MealRepository {
     @Override
     public boolean delete(int id) {
         return proxy.delete(id) != 0;
+    }
+
+    @Override
+    public int getTotalSum() {
+        return (int)proxy.getTotalSum();
     }
 }

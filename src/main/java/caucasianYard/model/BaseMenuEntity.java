@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 
 @MappedSuperclass
-public class BaseMenuEntity {
+public abstract class BaseMenuEntity {
 
     private int id;
 

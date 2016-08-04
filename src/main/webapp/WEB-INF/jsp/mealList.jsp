@@ -35,7 +35,7 @@
             <c:url var="deleteUrl" value="/meals/delete?id=${meal.id}" />
             <td>${meal.description}</td>
             <td>${meal.cost}</td>
-            <td><fmt:formatNumber value="${meal.cost*(1-toMoney.discount/100)}" maxFractionDigits="0"/></td>
+            <td><fmt:formatNumber value="${meal.cost*(1-moneyDTO.discount/100)}" maxFractionDigits="0"/></td>
             <td>${meal.user.name}</td>
             <td><a href="${editUrl}">Edit</a></td>
             <td><a href="${deleteUrl}">Delete</a></td>
@@ -52,7 +52,7 @@
 <hr>
 <section>
     <div class="myDiv">
-    <form:form modelAttribute="toMoney" id="toMoney" method="post" action="${pageContext.request.contextPath}/money" >
+    <form:form modelAttribute="moneyDTO" id="moneyDTO" method="post" action="${pageContext.request.contextPath}/money" >
         <form:hidden path="id"/>
         <span class="money">Payed in fact:</span>
         <form:input path="payed" cssClass="money"/>
@@ -76,10 +76,10 @@
     </thead>
     <tbody>
     <tr>
-        <td>${toMoney.sumWithOutDiscount}</td>
-        <td><fmt:formatNumber value="${toMoney.discount}" maxFractionDigits="2"/>%</td>
-        <td>${toMoney.sumWithDiscount}</td>
-        <td>${toMoney.tips}</td>
+        <td>${moneyDTO.sumWithOutDiscount}</td>
+        <td><fmt:formatNumber value="${moneyDTO.discount}" maxFractionDigits="2"/>%</td>
+        <td>${moneyDTO.sumWithDiscount}</td>
+        <td>${moneyDTO.tips}</td>
     </tr>
     </tbody>
 </table>

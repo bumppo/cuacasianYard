@@ -1,9 +1,14 @@
 package caucasianYard.web.vaadin.ui;
 
 import caucasianYard.service.UserService;
+import caucasianYard.web.vaadin.utils.Utils;
+import caucasianYard.web.vaadin.view.*;
+import caucasianYard.web.vaadin.view.bill.BillView;
+import caucasianYard.web.vaadin.view.menu.MenuView;
+import caucasianYard.web.vaadin.view.order.OrderView;
+import caucasianYard.web.vaadin.view.visitors.VisitorsView;
 import com.vaadin.annotations.DesignRoot;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -11,10 +16,6 @@ import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.themes.ValoTheme;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import javax.servlet.annotation.WebServlet;
 
 /**
  * @author Vitaly Moskalik
@@ -24,20 +25,11 @@ import javax.servlet.annotation.WebServlet;
 @SuppressWarnings("serial")
 public class MyUI extends UI {
 
-    @Autowired
-    UserService userService;
+//    @Autowired
+//    UserService userService;
 
     public MyUI() {
-        //Add bean to Spring Context
-        if (VaadinServlet.getCurrent() != null){
-            try {
-                WebApplicationContextUtils
-                        .getRequiredWebApplicationContext(VaadinServlet.getCurrent().getServletContext())
-                        .getAutowireCapableBeanFactory().autowireBean(this);
-            } catch (BeansException e){
-                e.printStackTrace();
-            }
-        }
+        Utils.addObjectToContext(this);
     }
 
     @DesignRoot
@@ -65,17 +57,19 @@ public class MyUI extends UI {
 
     /** Main web with a menu (with declarative layout design) */
     @DesignRoot
-    public class MainView extends HorizontalLayout {
+    public class MainView extends VerticalLayout {
         private static final long serialVersionUID = -3398565663865641952L;
 
-        public static final String NAME = "main";
-
+        Label title;
+        HorizontalLayout content;
+        CssLayout menu;
+        Panel contentArea;
         Navigator navigator;
 
-        class AnimalButton extends Button {
+        class MenuButton extends Button {
             private static final long serialVersionUID = -8596942814960467072L;
 
-            public AnimalButton(String caption, String id) {
+            public MenuButton(String caption, String id) {
                 super(caption);
                 addStyleName(ValoTheme.MENU_ITEM);
 //                setIcon(new ThemeResource("img/" + id + "-16px.png"));
@@ -83,67 +77,47 @@ public class MyUI extends UI {
             }
         }
 
-        Label title;
-        CssLayout menu;
-        Panel contentArea;
-        Button logoutButton;
-
-        public MainView(String username) {
-            setSizeFull();
+        public MainView() {
+//            setSizeFull();
             addStyleName(ValoTheme.MENU_ROOT);
 
-            title = new Label("Animal Farm");
+            title = new Label("Кавказский дворик");
             title.addStyleName(ValoTheme.MENU_TITLE);
+            addComponent(title);
+
+            content = new HorizontalLayout();
+            content.setSizeFull();
+            content.setSpacing(true);
+            content.setMargin(true);
+            addComponent(content);
 
             menu = new CssLayout();
             menu.addStyleName(ValoTheme.MENU_PART);
-            addComponent(menu);
+            content.addComponent(menu);
 
-            menu.addComponent(new AnimalButton("Pig",      "pig"));
-            menu.addComponent(new AnimalButton("Cat",      "cat"));
-            menu.addComponent(new AnimalButton("Dog",      "dog"));
-            menu.addComponent(new AnimalButton("Reindeer", "reindeer"));
-            menu.addComponent(new AnimalButton("Penguin",  "penguin"));
-            menu.addComponent(new AnimalButton("Sheep",    "sheep"));
+            menu.addComponent(new MenuButton("Главная", "home"));
+            menu.addComponent(new MenuButton("Меню",  "menu"));
+            menu.addComponent(new MenuButton("Посетители", "visitors"));
+            menu.addComponent(new MenuButton("Заказ", "order"));
+            menu.addComponent(new MenuButton("Счёт", "bill"));
 
-            contentArea = new Panel("Equals");
+            contentArea = new Panel();
             contentArea.addStyleName(ValoTheme.PANEL_BORDERLESS);
             contentArea.setSizeFull();
-            addComponent(contentArea);
-            setExpandRatio(contentArea, 1.0f);
+            content.addComponent(contentArea);
+            content.setExpandRatio(contentArea, 1.0f);
 
             // Create a navigator to control the sub-views
             navigator = new Navigator(UI.getCurrent(), contentArea);
 
             // Create and register the sub-views
-            navigator.addView("pig", AnimalView.class);
-            navigator.addView("cat", AnimalView.class);
-            navigator.addView("dog", AnimalView.class);
-            navigator.addView("reindeer", AnimalView.class);
-            navigator.addView("penguin",  AnimalView.class);
-            navigator.addView("sheep",    AnimalView.class);
-            navigator.addView("", AnimalView.class);
-
-            // Allow going back to the start
-//            logoutButton = new Button("Log Out");
-//            logoutButton.addClickListener(click -> // Java 8
-//                    logout.run());
-//            addComponent(logoutButton);
+            navigator.addView("home", HomeView.class);
+            navigator.addView("menu", MenuView.class);
+            navigator.addView("visitors", VisitorsView.class);
+            navigator.addView("order", OrderView.class);
+            navigator.addView("bill", BillView.class);
+            navigator.setErrorView(HomeView.class);
         }
-
-        /*
-        @Override
-        public void enter(ViewChangeEvent event) {
-            if (event.getParameters() == null
-                || event.getParameters().isEmpty()) {
-                equalPanel.setContent(
-                    new Label("Nothing to see here, " +
-                              "just pass along."));
-                return;
-            } else
-                equalPanel.setContent(new AnimalViewer(
-                    event.getParameters()));
-        }*/
     }
 
     @Override
@@ -154,54 +128,6 @@ public class MyUI extends UI {
         addStyleName(ValoTheme.UI_WITH_MENU);
         setResponsive(true);
 
-//        // Handle login and logout
-//        setContent(new MainView(username, () -> {
-//                    VaadinSession.getCurrent().close();
-//                    Page.getCurrent().setLocation(VaadinServlet.getCurrent()
-//                            .getServletContext().getContextPath() +
-//                            "/navigator");
-//                }));
-
-        setContent(new MainView("username"));
+        setContent(new MainView());
     }
-
-
-
-
-
-
-
-//    @Override
-//    protected void init(VaadinRequest request) {
-//        HorizontalLayout layout = new HorizontalLayout();
-//        Grid users = new Grid();
-//        Grid oneUser = new Grid();
-//
-//        users.setContainerDataSource(new BeanItemContainer<>(User.class, userService.getAll()));
-//        users.setColumns("name");
-//
-//        BeanContainer<Integer, User> usersWithMeals = new BeanContainer<>(User.class);
-//        usersWithMeals.setBeanIdProperty("id");
-//        User user = userService.getWithMeals(100);
-//        usersWithMeals.addBean(user);
-////        Table table = new Table(user.getName(), usersWithMeals);
-////        table.setVisibleColumns("name", );
-//        oneUser.setContainerDataSource(new BeanItemContainer<>(Meal.class, user.getMeals()));
-//        oneUser.setColumns("description", "cost");
-//
-////        oneUser.setContainerDataSource(new BeanContainer<>(User.class, userService.getWithMeals(100)));
-//
-//        layout.addComponent(users);
-//        layout.addComponent(oneUser);
-//        layout.setMargin(true);
-//        layout.setSpacing(true);
-//
-//        setContent(layout);
-//
-////        setContent(new Label("Hello world!"));
-//    }
-
-
-
-
 }
