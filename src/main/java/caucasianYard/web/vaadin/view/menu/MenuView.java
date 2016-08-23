@@ -14,7 +14,6 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.annotation.PostConstruct;
 
 /**

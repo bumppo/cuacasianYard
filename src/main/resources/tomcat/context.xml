@@ -38,7 +38,7 @@
               type="javax.sql.DataSource"
               logAbandoned="true"
               username="postgres"
-              password="cisco123"
+              password="postgres"
               driverClassName="org.postgresql.Driver"
               url="jdbc:postgresql://localhost:5432/caucasianYard"/>
     <!--removeAbandoned="true"-->

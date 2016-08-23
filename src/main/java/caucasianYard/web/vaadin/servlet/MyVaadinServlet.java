@@ -3,7 +3,6 @@ package caucasianYard.web.vaadin.servlet;
 import caucasianYard.web.vaadin.ui.MyUI;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinServlet;
-
 import javax.servlet.annotation.WebServlet;
 
 /**

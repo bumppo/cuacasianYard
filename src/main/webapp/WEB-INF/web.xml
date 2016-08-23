@@ -30,6 +30,24 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <!--<servlet>-->
+        <!--<servlet-name>MyVaadinServlet</servlet-name>-->
+        <!--<servlet-class>caucasianYard.web.vaadin.servlet.MyVaadinServlet</servlet-class>-->
+        <!--<init-param>-->
+            <!--<param-name>UI</param-name>-->
+            <!--<param-value>caucasianYard.web.vaadin.ui.MyUI</param-value>-->
+        <!--</init-param>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>MyVaadinServlet</servlet-name>-->
+        <!--<url-pattern>/vui/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>MyVaadinServlet</servlet-name>-->
+        <!--<url-pattern>/VAADIN/*</url-pattern>-->
+    <!--</servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
         <url-pattern>/mvc/*</url-pattern>

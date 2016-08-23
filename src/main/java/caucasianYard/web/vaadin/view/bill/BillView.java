@@ -6,15 +6,11 @@ import caucasianYard.web.vaadin.utils.Utils;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import javax.annotation.PostConstruct;
 
 /**

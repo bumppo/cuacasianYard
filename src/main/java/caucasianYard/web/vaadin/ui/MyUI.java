@@ -1,6 +1,5 @@
 package caucasianYard.web.vaadin.ui;
 
-import caucasianYard.service.UserService;
 import caucasianYard.web.vaadin.utils.Utils;
 import caucasianYard.web.vaadin.view.*;
 import caucasianYard.web.vaadin.view.bill.BillView;
@@ -24,9 +23,6 @@ import com.vaadin.ui.themes.ValoTheme;
 @Theme("mytheme")
 @SuppressWarnings("serial")
 public class MyUI extends UI {
-
-//    @Autowired
-//    UserService userService;
 
     public MyUI() {
         Utils.addObjectToContext(this);
@@ -123,11 +119,9 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         getPage().setTitle("Navigation Example");
-
         // Enable Valo menu
         addStyleName(ValoTheme.UI_WITH_MENU);
         setResponsive(true);
-
         setContent(new MainView());
     }
 }
