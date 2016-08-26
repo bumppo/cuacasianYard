@@ -26,26 +26,26 @@ public class CommonMealRepositoryImpl implements CommonMealRepository {
 
     @Override
     public List<CommonMeal> getAll() {
-        return null;
+        return proxy.findAll();
     }
 
     @Override
     public CommonMeal get(int id) {
-        return null;
+        return proxy.findOne(id);
     }
 
     @Override
     public CommonMeal save(CommonMeal commonMeal) {
-        return null;
+        return proxy.save(commonMeal);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return proxy.delete(id) != 0;
     }
 
-    @Override
-    public int getTotalSum() {
-        return 0;
-    }
+//    @Override
+//    public int getTotalSum() {
+//        return 0;
+//    }
 }

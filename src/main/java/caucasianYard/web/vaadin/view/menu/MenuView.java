@@ -10,6 +10,7 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.event.ShortcutListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
@@ -71,9 +72,8 @@ public class MenuView extends HorizontalLayout implements View {
             menuForm.setVisible(true);
         });
 
-        editing.setSpacing(true);
         editing.addComponents(addNew, menuEdit, menuForm);
-
+        editing.setSpacing(true);
         addComponents(accordion, editing);
     }
 
@@ -93,9 +93,11 @@ public class MenuView extends HorizontalLayout implements View {
     private class LayoutWithGrid extends VerticalLayout {
 
         private Grid grid = new Grid();
+        private BeanItemContainer<MenuMeal> container = new BeanItemContainer<>(MenuMeal.class);
 
         private LayoutWithGrid(Menu menu) {
-            grid.setContainerDataSource(new BeanItemContainer<>(MenuMeal.class, menu.getMenuMeals()));
+            container.addAll(menu.getMenuMeals());
+            grid.setContainerDataSource(container);
 
             grid.addSelectionListener(select -> {
                 if (select.getSelected().isEmpty()) {
@@ -107,6 +109,8 @@ public class MenuView extends HorizontalLayout implements View {
                 }
             });
             grid.setColumns("description", "cost");
+            grid.setHeightByRows(container.size() + 2);
+            grid.setHeightMode(HeightMode.ROW);
 
             addComponent(grid);
         }

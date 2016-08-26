@@ -6,7 +6,7 @@ import caucasianYard.web.vaadin.utils.Utils;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Alignment;
+import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.VerticalLayout;
@@ -37,13 +37,16 @@ public class BillView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
+        setWidthUndefined();
         setSpacing(true);
 
         billForm = new BillForm(this);
 
         updateGrid();
+        grid.setHeightMode(HeightMode.ROW);
+        grid.setWidth(800, Unit.PIXELS);
 
-        setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+//        setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         addComponents(billForm, grid);
     }
 
@@ -51,5 +54,6 @@ public class BillView extends VerticalLayout implements View {
         moneyBeanItemContainer.removeAllItems();
         moneyBeanItemContainer.addBean(moneyService.get());
         grid.setContainerDataSource(moneyBeanItemContainer);
+        grid.setHeightByRows(moneyBeanItemContainer.size());
     }
 }

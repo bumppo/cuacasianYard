@@ -8,6 +8,7 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.event.ShortcutListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,11 @@ public class VisitorsView extends HorizontalLayout implements View {
     User selectedUser;
     private BeanItemContainer<User> userBeanItemContainer = new BeanItemContainer<>(User.class);
 
-    private VerticalLayout vertical = new VerticalLayout();
     private VisitorEdit visitorEdit = new VisitorEdit(this);
     VisitorForm visitorForm = new VisitorForm(this);
     private Grid grid = new Grid("Посетители");
     private Button addNew = new Button("Добавить посетителя");
+    private VerticalLayout editing = new VerticalLayout();
 
     public VisitorsView() {
         Utils.addObjectToContext(this);
@@ -43,8 +44,8 @@ public class VisitorsView extends HorizontalLayout implements View {
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         setSpacing(true);
 
+        /** AddNew Button */
         addNew.setStyleName(ValoTheme.BUTTON_PRIMARY);
-        vertical.addComponent(addNew);
         addNew.addClickListener(click -> {
             deselectAll();
             selectedUser = new User();
@@ -52,9 +53,8 @@ public class VisitorsView extends HorizontalLayout implements View {
             visitorForm.setVisible(true);
         });
 
+        /** Grid */
         updateGrid();
-        vertical.addComponent(grid);
-        vertical.setComponentAlignment(grid, Alignment.MIDDLE_LEFT);
         grid.addSelectionListener(select -> {
             if (select.getSelected().isEmpty()){
                 deselectAll();
@@ -70,13 +70,14 @@ public class VisitorsView extends HorizontalLayout implements View {
                 deselectAll();
             }
         });
+        grid.setHeightMode(HeightMode.ROW);
 
         visitorEdit.setVisible(false);
-        vertical.addComponent(visitorEdit);
-
         visitorForm.setVisible(false);
 
-        addComponents(vertical, visitorForm);
+        editing.addComponents(addNew, visitorEdit, visitorForm);
+        editing.setSpacing(true);
+        addComponents(grid, editing);
     }
 
     void updateGrid(){
@@ -86,6 +87,7 @@ public class VisitorsView extends HorizontalLayout implements View {
         grid.setColumns("name");
         Grid.Column nameColumn = grid.getColumn("name");
         nameColumn.setHeaderCaption("Имя");
+        grid.setHeightByRows(userBeanItemContainer.size());
     }
 
     void deselectAll(){

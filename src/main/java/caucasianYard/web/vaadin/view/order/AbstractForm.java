@@ -48,11 +48,12 @@ abstract class AbstractForm<E extends BaseEntity> extends FormLayout {
         });
 
         save.setStyleName(ValoTheme.BUTTON_FRIENDLY);
-        save.addClickListener(event -> this.save());
+        save.addClickListener(event -> save());
         save.setClickShortcut(KeyboardEvent.KeyCode.ENTER);
 
         cancel.setStyleName(ValoTheme.BUTTON_DANGER);
-        cancel.addClickListener(event -> this.cancel());
+        cancel.addClickListener(event -> cancel());
+        cancel.setClickShortcut(KeyboardEvent.KeyCode.ESC);
 
         HorizontalLayout buttons = new HorizontalLayout(save, cancel);
         buttons.setSpacing(true);

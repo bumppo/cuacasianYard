@@ -32,10 +32,10 @@
     </servlet>
     <!--<servlet>-->
         <!--<servlet-name>MyVaadinServlet</servlet-name>-->
-        <!--<servlet-class>caucasianYard.web.vaadin.servlet.MyVaadinServlet</servlet-class>-->
+        <!--<servlet-class>caucasianYard.web.vaadin.MyVaadinServlet</servlet-class>-->
         <!--<init-param>-->
             <!--<param-name>UI</param-name>-->
-            <!--<param-value>caucasianYard.web.vaadin.ui.MyUI</param-value>-->
+            <!--<param-value>caucasianYard.web.vaadin.MyUI</param-value>-->
         <!--</init-param>-->
         <!--<load-on-startup>1</load-on-startup>-->
     <!--</servlet>-->

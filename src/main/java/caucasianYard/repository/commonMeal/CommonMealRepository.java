@@ -18,5 +18,5 @@ public interface CommonMealRepository {
 
     boolean delete(int id);
 
-    int getTotalSum();
+//    int getTotalSum();
 }

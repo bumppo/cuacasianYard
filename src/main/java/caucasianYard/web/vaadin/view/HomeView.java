@@ -29,6 +29,7 @@ public class HomeView extends VerticalLayout implements View {
 
         welcome.setValue("Добро пожаловать!");
         welcome.addStyleName(ValoTheme.LABEL_HUGE);
+        welcome.setWidthUndefined();
 
         setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         addComponents(picture, welcome);

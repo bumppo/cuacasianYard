@@ -1,4 +1,4 @@
-package caucasianYard.web.vaadin.ui;
+package caucasianYard.web.vaadin;
 
 import caucasianYard.web.vaadin.utils.Utils;
 import caucasianYard.web.vaadin.view.*;
@@ -6,14 +6,10 @@ import caucasianYard.web.vaadin.view.bill.BillView;
 import caucasianYard.web.vaadin.view.menu.MenuView;
 import caucasianYard.web.vaadin.view.order.OrderView;
 import caucasianYard.web.vaadin.view.visitors.VisitorsView;
-import com.vaadin.annotations.DesignRoot;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.themes.ValoTheme;
 
 /**
@@ -28,31 +24,6 @@ public class MyUI extends UI {
         Utils.addObjectToContext(this);
     }
 
-    @DesignRoot
-    static public class AnimalView extends VerticalLayout implements View {
-        private static final long serialVersionUID = 6852298665681141274L;
-
-        Label watching;
-        Embedded pic;
-        Label back;
-
-        public AnimalView() {
-            Design.read(this);
-        }
-
-        @Override
-        public void enter(ViewChangeListener.ViewChangeEvent event) {
-            String animal = event.getViewName();
-
-            watching.setValue("You are currently watching a " + animal);
-//            pic.setSource(new ThemeResource("img/" + animal + "-128px.png"));
-            back.setValue("and " + animal + " is watching you back");
-        }
-    }
-
-
-    /** Main web with a menu (with declarative layout design) */
-    @DesignRoot
     public class MainView extends VerticalLayout {
         private static final long serialVersionUID = -3398565663865641952L;
 
@@ -74,7 +45,7 @@ public class MyUI extends UI {
         }
 
         public MainView() {
-//            setSizeFull();
+            setSizeFull();
             addStyleName(ValoTheme.MENU_ROOT);
 
             title = new Label("Кавказский дворик");
@@ -86,6 +57,7 @@ public class MyUI extends UI {
             content.setSpacing(true);
             content.setMargin(true);
             addComponent(content);
+            setExpandRatio(content, 1.0f);
 
             menu = new CssLayout();
             menu.addStyleName(ValoTheme.MENU_PART);
@@ -98,8 +70,8 @@ public class MyUI extends UI {
             menu.addComponent(new MenuButton("Счёт", "bill"));
 
             contentArea = new Panel();
-            contentArea.addStyleName(ValoTheme.PANEL_BORDERLESS);
             contentArea.setSizeFull();
+            contentArea.addStyleName(ValoTheme.PANEL_BORDERLESS);
             content.addComponent(contentArea);
             content.setExpandRatio(contentArea, 1.0f);
 

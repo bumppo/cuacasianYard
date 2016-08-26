@@ -16,7 +16,7 @@ public class CommonMeal extends BaseEntity {
 
     @NotEmpty
     private String description;
-    @NotEmpty
+    @NotNull
     private Integer cost;
     @NotNull
     private Set<User> users;
